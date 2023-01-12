@@ -1,0 +1,124 @@
+Screen:
+    Cliente:
+
+<Cliente>:
+    canvas:
+        Color:
+            rgba: app.theme_cls.primary_color
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [25, 0, 0, 0]
+    MDScreen:
+
+        name:"main"
+        specific_text_color: 0, 0, 1, 1
+        Label:
+            specific_text_color: 0, 0, 1, 1
+            text:'Bienvenido'
+
+
+            font_size: 20
+            pos_hint: {"center_x": 0.5,"center_y": 0.9}
+        Label:
+            text: "Ingrese a su sesion"
+            color:
+            pos_hint: {"center_x": 0.2,"center_y": 0.85}
+
+        MDCard:
+
+            cols:1
+            color: 'white'
+            radius: [20]
+            size_hint: None, None
+            size: 350,400
+            pos_hint: {"center_x": 0.5,"center_y": 0.5}
+            elevation: 20
+            #md_bg_color: [1, 30/55, 30/55, 1]
+            padding: 20
+            spacing: 30
+
+            BoxLayout:
+                id:'La&Tx1'
+                orientation: 'vertical'
+
+                #size_hint: None, None
+                pos: 1000, 350
+                pos_hint: {"center_x": 0.5,"center_y": 0.5}
+                size: 300,350
+                cols:1
+
+                MDLabel:
+
+                    text: "imagen"
+                    color:'black'
+                    #font_style:'Button'
+                    font_size: 20
+                    halign: 'left'
+                    size_hint_y: None
+                    #padding_y: 15
+                    #elevation: 40
+                    size: self.texture_size
+                    #padding_y: 10
+
+                MDTextField:
+                    id: imagen
+
+                    hint_text: "Ingrese correo"
+                    mode: "rectangle"
+                    #padding_y: 1
+                    pos_hint: {"center_x": 0.5,"center_y": 0.9}
+                    line_color_focus: 0, 1, 0, 1
+                MDLabel:
+                    text: "ruta"
+                    color:'black'
+                    #font_style:'Button'
+                    font_size: 20
+                    halign: 'left'
+                    size_hint_y: None
+                    #padding_y: 15
+                    #elevation: 40
+                    size: self.texture_size
+                    #padding_y: 10
+
+                MDTextField:
+                    id: ruta
+
+                    hint_text: "Ingrese contraseña"
+                    #id: "next"
+                    mode: "rectangle"
+                    #padding_y: 1
+                    pos_hint: {"center_x": 0.5,"center_y": 0.9}
+                    line_color_focus: 0, 1, 0, 1
+
+                    #on_release: app.root.current= "perfil"
+
+                MDFlatButton:
+                    text: "Olvide contraseña"
+                    text_color: 0, 0, 1, 1
+                    pos_hint: {"center_x": 0.16,"center_y": 0.3}
+                    spacing: 20
+                    on_release: app.root.current= "contrase"
+                BoxLayout:
+                    padding: 40
+                    spacing: 50
+
+                    MDRoundFlatButton:
+                        text: "Registrar"
+                        color:'white'
+                        size_hint: None, None
+                        size: self.texture_size
+                        size: 100,30
+                        on_release: app.root.current= "registro"
+
+                    MDRoundFlatButton:
+                        text: "Ingresar"
+                        color:'white'
+                        size_hint: None, None
+                        size: self.texture_size
+                        size: 100,30
+                        #pos_hint: {"center_x": 0.9}
+                        #on_release: app.root.get_data
+                        on_release: app.subir_imagen(imagen.text,ruta.text)
+
+

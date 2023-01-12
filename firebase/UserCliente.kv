@@ -1,0 +1,895 @@
+
+ClienteUsuario:
+    Principal:
+    Productos:
+<Principal>:
+
+
+    MDScreen:
+        orientation:"vertical"
+        size_hint:.99,.99
+        pos_hint: {"center_x":.5 ,"center_y": .5}
+        md_bg_color: [0,30/255,30/255,.1]
+        padding:120
+        radius:25,25,25,25
+        MDToolbar:
+            title: 'Bottom navigation'
+            md_bg_color: .2, .2, .2, 1
+            specific_text_color: 1, 1, 1, 1
+            border_margin: 25
+        MDBottomNavigation:
+            background_color: .2, .2, .2, 1
+            MDBottomNavigationItem:
+                name: 'screen 1'
+                text: 'PERFIL'
+                icon: 'account-box'
+                #radius:10
+                #md_bg_color: [1,135/255,115/255, .4]
+
+
+
+                MDRelativeLayout:
+
+                    md_bg_color: [0,135/255,115/255, .4]
+
+                    radius: 25
+
+
+                    #size: 60,60
+                    size_hint: .8,.07
+                    pos_hint: {"center_x":.5 ,"center_y": .9}
+                    right_action_items: [['menu', lambda x: nav_drawer.toggle_nav_drawer()]]
+
+
+                    Label:
+                        text:"PERFIL"
+                        font_size:"24"
+                        halign:"center"
+                        pos_hint: {"center_x":.5 ,"center_y": .5}
+                MDRaisedButton:
+
+                    background_color: [0,135/255,115/255, 1]
+                    size_hint: .4,.25
+                    pos_hint: {"center_x":.5 ,"center_y": .7}
+
+
+                    #pos_hint: {"center_x":.5 ,"center_y": .66}
+                    Image:
+
+                        source: 'C:/env/kivy/IMAGENES/1.jpg'
+                        allow_stretch: True
+                        keep_ratio: False
+                Label:
+                    text:"INFORMACION"
+                    font_size:"20"
+                    halign:"center"
+                    color: (0,135/255,115/255, .4)
+                    pos_hint: {"center_x":.5 ,"center_y": .52}
+                MDRelativeLayout:
+
+                    md_bg_color: [.2,40/255,40/255, .1]
+
+
+
+                    #size: 60,60
+                    radius: 20
+                    size_hint: .8,.45
+                    pos_hint: {"center_x":.5 ,"center_y": .26}
+
+            MDBottomNavigationItem:
+
+                name: 'screen 2'
+                text: 'PRINCIPAL'
+                icon: 'store'
+                radius:10
+                md_bg_color: [1,135/255,115/255, .4]
+
+
+
+
+                MDScreen:
+
+
+
+                    size_hint:1,1
+                    pos_hint: {"center_x":.5 ,"center_y": .5}
+                    md_bg_color: [0,30/255,30/255,.1]
+
+                    radius:25,25,0,0
+                    MDRelativeLayout:
+                        radius:20
+                        md_bg_color: [0,135/255,115/255, .4]
+
+
+                        #size: 60,60
+                        size_hint: .8,.06
+                        pos_hint: {"center_x":.5 ,"center_y": .95}
+                        MDIconButton:
+                            icon:"keyboard-backspace"
+                            theme_icon_color: "Custom"
+                            icon_color: app.theme_cls.primary_color
+                            on_release: app.root.current= ""
+                            pos_hint: {"center_x":.091 ,"center_y": .5}
+
+
+
+                        Label:
+                            font_size: 18
+                            color: (0,0,0,.9)
+                            text: "PRINCIPAL"
+                    MDTextField:
+
+                        pos_hint: {"center_x":.5 ,"center_y": .89}
+                        size_hint:.75,.1
+
+                    MDIconButton:
+                        icon: "magnify"
+                        tooltip_text: self.icon
+                        pos_hint: {"center_x": .1, "center_y": .89}
+
+                    MDRelativeLayout:
+                        radius:20
+                        md_bg_color: [0,135/255,115/255, .4]
+
+
+                        #size: 60,60
+                        size_hint: .45,.06
+                        pos_hint: {"center_x":.5 ,"center_y": .82}
+
+                        Label:
+                            pos_hint: {"center_x":.5}
+                            text: "CATEGORIAS"
+                            font_size: 16
+                            color:(0,65/255,85/255, .6)
+                    MDScreen:
+
+                        size_hint: 1,.75
+
+                        canvas.before:
+                            Color:
+                                rgba:(0,135/255,115/255, .4)
+                            Rectangle:
+                                pos: self.pos
+                                size: self.size
+                        ScrollView:
+                            size_hint_y:1
+                            #pos_hint: {'x':0, 'y':1}
+                            do_scroll_x:False
+                            do_scroll_y:True
+                            MDGridLayout:
+                                adaptive_height: True
+                                size:(root.width, 2000)
+                                #md_bg_color: app.theme_cls.primary_color
+                                cols:1
+
+
+                                Label:
+                                    text:"PROMOCIONES"
+                                    font_size:"20"
+                                    size_hint: 1,.01
+                                    #halign:"center"
+
+                                    pos_hint: {"center_x":.25}
+                                Carousel:
+                                    color: (0,135/255,115/255, .4)
+                                    adaptive_height: True
+                                    spacing:50
+                                    padding:50
+                                    size_hint: .5,.10
+                                    #pos_hint: {"center_x":.5 ,"center_y": .7}
+                                    MDRaisedButton:
+                                        md_bg_color: [0,135/255,115/255, .4]
+                                        size_hint: 1,1
+                                        #pos_hint: {"center_x":.75 ,"center_y": .8}
+                                        radius: 30
+                                        padding:25
+                                        on_release: app.root.current= "productos"
+
+
+                                        #pos_hint: {"center_x":.5 ,"center_y": .66}
+
+                                        Image:
+                                            source: 'C:/env/kivy/IMAGENES/1.jpg'
+                                            allow_stretch: True
+                                            keep_ratio: False
+                                    MDRaisedButton:
+                                        md_bg_color: [0,135/255,115/255, .4]
+                                        size_hint: 1,1
+                                        #pos_hint: {"center_x":.75 ,"center_y": .8}
+                                        radius: 30
+                                        padding:25
+                                        on_release: app.root.current= "productos"
+
+
+                                        #pos_hint: {"center_x":.5 ,"center_y": .66}
+
+                                        Image:
+                                            source: 'C:/env/kivy/IMAGENES/2.jpg'
+                                            allow_stretch: True
+                                            keep_ratio: False
+
+
+                                    MDRaisedButton:
+                                        md_bg_color: [0,135/255,115/255, .4]
+                                        size_hint: 1,1
+                                        #pos_hint: {"center_x":.75 ,"center_y": .8}
+                                        radius: 30
+                                        padding:25
+                                        on_release: app.root.current= "productos"
+
+
+                                        #pos_hint: {"center_x":.5 ,"center_y": .66}
+
+                                        Image:
+                                            source: 'C:/env/kivy/IMAGENES/3.jpg'
+
+                                            allow_stretch: True
+                                            keep_ratio: False
+                                Label:
+                                    text:"FAVORITOS"
+                                    font_size:"20"
+                                    size_hint: 1,.01
+                                    #halign:"center"
+
+                                    pos_hint: {"center_x":.25}
+                                Carousel:
+                                    color: (0,135/255,115/255, .4)
+                                    adaptive_height: True
+                                    spacing:50
+                                    padding:50
+                                    size_hint: .5,.10
+                                    #pos_hint: {"center_x":.5 ,"center_y": .7}
+                                    MDRaisedButton:
+                                        md_bg_color: [0,135/255,115/255, .4]
+                                        size_hint: 1,1
+                                        #pos_hint: {"center_x":.75 ,"center_y": .8}
+                                        radius: 30
+                                        padding:25
+                                        on_release: app.root.current= "productos"
+
+
+                                        #pos_hint: {"center_x":.5 ,"center_y": .66}
+
+                                        Image:
+                                            source: 'C:/env/kivy/IMAGENES/1.jpg'
+                                            allow_stretch: True
+                                            keep_ratio: False
+                                    MDRaisedButton:
+                                        md_bg_color: [0,135/255,115/255, .4]
+                                        size_hint: 1,1
+                                        #pos_hint: {"center_x":.75 ,"center_y": .8}
+                                        radius: 30
+                                        padding:25
+                                        on_release: app.root.current= "productos"
+
+
+                                        #pos_hint: {"center_x":.5 ,"center_y": .66}
+
+                                        Image:
+                                            source: 'C:/env/kivy/IMAGENES/2.jpg'
+                                            allow_stretch: True
+                                            keep_ratio: False
+
+
+                                    MDRaisedButton:
+                                        md_bg_color: [0,135/255,115/255, .4]
+                                        size_hint: 1,1
+                                        #pos_hint: {"center_x":.75 ,"center_y": .8}
+                                        radius: 30
+                                        padding:25
+                                        on_release: app.root.current= "productos"
+
+
+                                        #pos_hint: {"center_x":.5 ,"center_y": .66}
+
+                                        Image:
+                                            source: 'C:/env/kivy/IMAGENES/3.jpg'
+
+                                            allow_stretch: True
+                                            keep_ratio: False
+                                Label:
+                                    text:"EVENTOS"
+                                    font_size:"20"
+                                    size_hint: 1,.01
+                                    #halign:"center"
+
+                                    pos_hint: {"center_x":.25}
+                                Carousel:
+                                    color: (0,135/255,115/255, .4)
+                                    adaptive_height: True
+                                    spacing:50
+                                    padding:50
+                                    size_hint: .5,.10
+                                    #pos_hint: {"center_x":.5 ,"center_y": .7}
+                                    MDRaisedButton:
+                                        md_bg_color: [0,135/255,115/255, .4]
+                                        size_hint: 1,1
+                                        #pos_hint: {"center_x":.75 ,"center_y": .8}
+                                        radius: 30
+                                        padding:25
+                                        on_release: app.root.current= "productos"
+
+
+                                        #pos_hint: {"center_x":.5 ,"center_y": .66}
+
+                                        Image:
+                                            source: 'C:/env/kivy/IMAGENES/1.jpg'
+                                            allow_stretch: True
+                                            keep_ratio: False
+                                    MDRaisedButton:
+                                        md_bg_color: [0,135/255,115/255, .4]
+                                        size_hint: 1,1
+                                        #pos_hint: {"center_x":.75 ,"center_y": .8}
+                                        radius: 30
+                                        padding:25
+                                        on_release: app.root.current= "productos"
+
+
+                                        #pos_hint: {"center_x":.5 ,"center_y": .66}
+
+                                        Image:
+                                            source: 'C:/env/kivy/IMAGENES/2.jpg'
+                                            allow_stretch: True
+                                            keep_ratio: False
+
+
+                                    MDRaisedButton:
+                                        md_bg_color: [0,135/255,115/255, .4]
+                                        size_hint: 1,1
+                                        #pos_hint: {"center_x":.75 ,"center_y": .8}
+                                        radius: 30
+                                        padding:25
+                                        on_release: app.root.current= "productos"
+
+
+                                        #pos_hint: {"center_x":.5 ,"center_y": .66}
+
+                                        Image:
+                                            source: 'C:/env/kivy/IMAGENES/3.jpg'
+
+                                            allow_stretch: True
+                                            keep_ratio: False
+                                Label:
+                                    text:"DEPORTES"
+                                    font_size:"20"
+                                    size_hint: 1,.01
+                                    #halign:"center"
+
+                                    pos_hint: {"center_x":.25}
+                                Carousel:
+                                    color: (0,135/255,115/255, .4)
+                                    adaptive_height: True
+                                    spacing:50
+                                    padding:50
+                                    size_hint: .5,.10
+                                    #pos_hint: {"center_x":.5 ,"center_y": .7}
+                                    MDRaisedButton:
+                                        md_bg_color: [0,135/255,115/255, .4]
+                                        size_hint: 1,1
+                                        #pos_hint: {"center_x":.75 ,"center_y": .8}
+                                        radius: 30
+                                        padding:25
+                                        on_release: app.root.current= "productos"
+
+
+                                        #pos_hint: {"center_x":.5 ,"center_y": .66}
+
+                                        Image:
+                                            source: 'C:/env/kivy/IMAGENES/1.jpg'
+                                            allow_stretch: True
+                                            keep_ratio: False
+                                    MDRaisedButton:
+                                        md_bg_color: [0,135/255,115/255, .4]
+                                        size_hint: 1,1
+                                        #pos_hint: {"center_x":.75 ,"center_y": .8}
+                                        radius: 30
+                                        padding:25
+                                        on_release: app.root.current= "productos"
+
+
+                                        #pos_hint: {"center_x":.5 ,"center_y": .66}
+
+                                        Image:
+                                            source: 'C:/env/kivy/IMAGENES/2.jpg'
+                                            allow_stretch: True
+                                            keep_ratio: False
+
+
+                                    MDRaisedButton:
+                                        md_bg_color: [0,135/255,115/255, .4]
+                                        size_hint: 1,1
+                                        #pos_hint: {"center_x":.75 ,"center_y": .8}
+                                        radius: 30
+                                        padding:25
+                                        on_release: app.root.current= "productos"
+
+
+                                        #pos_hint: {"center_x":.5 ,"center_y": .66}
+
+                                        Image:
+                                            source: 'C:/env/kivy/IMAGENES/3.jpg'
+
+                                            allow_stretch: True
+                                            keep_ratio: False
+                                Label:
+                                    text:"ROPA"
+                                    font_size:"20"
+                                    size_hint: 1,.01
+                                    #halign:"center"
+
+                                    pos_hint: {"center_x":.25}
+                                Carousel:
+                                    color: (0,135/255,115/255, .4)
+                                    adaptive_height: True
+                                    spacing:50
+                                    padding:50
+                                    size_hint: .5,.10
+                                    #pos_hint: {"center_x":.5 ,"center_y": .7}
+                                    MDRaisedButton:
+                                        md_bg_color: [0,135/255,115/255, .4]
+                                        size_hint: 1,1
+                                        #pos_hint: {"center_x":.75 ,"center_y": .8}
+                                        radius: 30
+                                        padding:25
+                                        on_release: app.root.current= "productos"
+
+
+                                        #pos_hint: {"center_x":.5 ,"center_y": .66}
+
+                                        Image:
+                                            source: 'C:/env/kivy/IMAGENES/1.jpg'
+                                            allow_stretch: True
+                                            keep_ratio: False
+                                    MDRaisedButton:
+                                        md_bg_color: [0,135/255,115/255, .4]
+                                        size_hint: 1,1
+                                        #pos_hint: {"center_x":.75 ,"center_y": .8}
+                                        radius: 30
+                                        padding:25
+                                        on_release: app.root.current= "productos"
+
+
+                                        #pos_hint: {"center_x":.5 ,"center_y": .66}
+
+                                        Image:
+                                            source: 'C:/env/kivy/IMAGENES/2.jpg'
+                                            allow_stretch: True
+                                            keep_ratio: False
+
+
+                                    MDRaisedButton:
+                                        md_bg_color: [0,135/255,115/255, .4]
+                                        size_hint: 1,1
+                                        #pos_hint: {"center_x":.75 ,"center_y": .8}
+                                        radius: 30
+                                        padding:25
+                                        on_release: app.root.current= "productos"
+
+
+                                        #pos_hint: {"center_x":.5 ,"center_y": .66}
+
+                                        Image:
+                                            source: 'C:/env/kivy/IMAGENES/3.jpg'
+
+                                            allow_stretch: True
+                                            keep_ratio: False
+                                Label:
+                                    text:"TECNOLOGIA"
+                                    font_size:"20"
+                                    size_hint: 1,.01
+                                    #halign:"center"
+
+                                    pos_hint: {"center_x":.25}
+                                Carousel:
+                                    color: (0,135/255,115/255, .4)
+                                    adaptive_height: True
+                                    spacing:50
+                                    padding:50
+                                    size_hint: .5,.10
+                                    #pos_hint: {"center_x":.5 ,"center_y": .7}
+                                    MDRaisedButton:
+                                        md_bg_color: [0,135/255,115/255, .4]
+                                        size_hint: 1,1
+                                        #pos_hint: {"center_x":.75 ,"center_y": .8}
+                                        radius: 30
+                                        padding:25
+                                        on_release: app.root.current= "productos"
+
+
+                                        #pos_hint: {"center_x":.5 ,"center_y": .66}
+
+                                        Image:
+                                            source: 'C:/env/kivy/IMAGENES/1.jpg'
+                                            allow_stretch: True
+                                            keep_ratio: False
+                                    MDRaisedButton:
+                                        md_bg_color: [0,135/255,115/255, .4]
+                                        size_hint: 1,1
+                                        #pos_hint: {"center_x":.75 ,"center_y": .8}
+                                        radius: 30
+                                        padding:25
+                                        on_release: app.root.current= "productos"
+
+
+                                        #pos_hint: {"center_x":.5 ,"center_y": .66}
+
+                                        Image:
+                                            source: 'C:/env/kivy/IMAGENES/2.jpg'
+                                            allow_stretch: True
+                                            keep_ratio: False
+
+
+                                    MDRaisedButton:
+                                        md_bg_color: [0,135/255,115/255, .4]
+                                        size_hint: 1,1
+                                        #pos_hint: {"center_x":.75 ,"center_y": .8}
+                                        radius: 30
+                                        padding:25
+                                        on_release: app.root.current= "productos"
+
+
+                                        #pos_hint: {"center_x":.5 ,"center_y": .66}
+
+                                        Image:
+                                            source: 'C:/env/kivy/IMAGENES/3.jpg'
+
+                                            allow_stretch: True
+                                            keep_ratio: False
+                                Label:
+                                    text:"CONSUMIBLES"
+                                    font_size:"20"
+                                    size_hint: 1,.01
+                                    #halign:"center"
+
+                                    pos_hint: {"center_x":.25}
+                                Carousel:
+                                    color: (0,135/255,115/255, .4)
+                                    adaptive_height: True
+                                    spacing:50
+                                    padding:50
+                                    size_hint: .5,.10
+                                    #pos_hint: {"center_x":.5 ,"center_y": .7}
+                                    MDRaisedButton:
+                                        md_bg_color: [0,135/255,115/255, .4]
+                                        size_hint: 1,1
+                                        #pos_hint: {"center_x":.75 ,"center_y": .8}
+                                        radius: 30
+                                        padding:25
+                                        on_release: app.root.current= "productos"
+
+
+                                        #pos_hint: {"center_x":.5 ,"center_y": .66}
+
+                                        Image:
+                                            source: 'C:/env/kivy/IMAGENES/1.jpg'
+                                            allow_stretch: True
+                                            keep_ratio: False
+                                    MDRaisedButton:
+                                        md_bg_color: [0,135/255,115/255, .4]
+                                        size_hint: 1,1
+                                        #pos_hint: {"center_x":.75 ,"center_y": .8}
+                                        radius: 30
+                                        padding:25
+                                        on_release: app.root.current= "productos"
+
+
+                                        #pos_hint: {"center_x":.5 ,"center_y": .66}
+
+                                        Image:
+                                            source: 'C:/env/kivy/IMAGENES/2.jpg'
+                                            allow_stretch: True
+                                            keep_ratio: False
+
+
+                                    MDRaisedButton:
+                                        md_bg_color: [0,135/255,115/255, .4]
+                                        size_hint: 1,1
+                                        #pos_hint: {"center_x":.75 ,"center_y": .8}
+                                        radius: 30
+                                        padding:25
+                                        on_release: app.root.current= "productos"
+
+
+                                        #pos_hint: {"center_x":.5 ,"center_y": .66}
+
+                                        Image:
+                                            source: 'C:/env/kivy/IMAGENES/3.jpg'
+
+                                            allow_stretch: True
+                                            keep_ratio: False
+            MDBottomNavigationItem:
+                name: 'screen 3'
+                text: 'PEDIDOS'
+                icon: 'point-of-sale'
+                radius:10
+                md_bg_color: [1,135/255,115/255, .4]
+                MDRelativeLayout:
+
+                    md_bg_color: [0,135/255,115/255, .4]
+
+                    radius: 25
+
+
+                    #size: 60,60
+                    size_hint: .8,.07
+                    pos_hint: {"center_x":.5 ,"center_y": .9}
+                    right_action_items: [['menu', lambda x: nav_drawer.toggle_nav_drawer()]]
+
+
+                    Label:
+                        text:"VENTAS"
+                        font_size:"24"
+                        halign:"center"
+                        pos_hint: {"center_x":.5 ,"center_y": .5}
+                MDTextField:
+
+                    pos_hint: {"center_x":.5 ,"center_y": .8}
+                    size_hint:.75,.1
+
+                MDIconButton:
+                    icon: "magnify"
+                    tooltip_text: self.icon
+                    pos_hint: {"center_x": .1, "center_y": .8}
+                MDIconButton:
+                    icon: "calendar-search"
+                    tooltip_text: self.icon
+                    pos_hint: {"center_x": .8, "center_y": .7}
+                ScrollView:
+
+
+                    size_hint: .8,.5
+                    pos_hint: {"center_x":.5 ,"center_y": .4}
+                    MDTabs:
+                        id:tabs
+                        pos_hint: {"center_x":1 ,"center_y": 1}
+                        size_hint: 1,1
+                        md_bg_color: (0,135/255,115/255, .4)
+
+
+
+
+
+                        MDTabsBase:
+                            title: "Dia"
+
+
+                            MDFloatLayout:
+                                size: root.width, root.height
+
+
+                                MDRaisedButton:
+
+                                    text_color: 0, 0, 0, 1
+
+                                    line_color: 1, 1, 1, 1
+                                    text:"Evento 1"
+                                    size_hint:.6,.05
+                                    pos_hint: {"center_x": .4, "center_y": .4}
+
+
+
+                        MDTabsBase:
+                            title: "Mes"
+                            MDFloatLayout:
+                                size: root.width, root.height
+
+
+
+                                MDRoundFlatButton:
+                                    text_color: 0, 0, 0, 1
+
+                                    line_color: 1, 1, 1, 1
+                                    text:"Evento 1"
+                                    size_hint:.6,.05
+                                    pos_hint: {"center_x": .4, "center_y": .4}
+
+                        MDTabsBase:
+                            title: "Año"
+                            MDFloatLayout:
+                                size: root.width, root.height
+                MDRelativeLayout:
+                    radius:20
+                    md_bg_color: [0,135/255,115/255, .4]
+
+
+                    #size: 60,60
+                    size_hint: .6,.06
+                    pos_hint: {"center_x":.5 ,"center_y": .1}
+                    MDRaisedButton:
+                        size_hint: .9,1
+                        pos_hint: {"center_x":.5}
+                        md_bg_color: [0,0,0, 0]
+                        on_release: app.root.current= "crearproducto"
+                        Label:
+                            text: "Generar Reporte"
+                            font_size: 16
+                            color:(2,42/228,24/228, .7)
+<Productos>:
+    MDScreen:
+
+
+
+        size_hint:1,1
+        pos_hint: {"center_x":.5 ,"center_y": .5}
+        md_bg_color: [0,30/255,30/255,.1]
+
+        radius:25,25,0,0
+        MDRelativeLayout:
+            radius:20
+            md_bg_color: [0,135/255,115/255, .4]
+
+
+            #size: 60,60
+            size_hint: .8,.06
+            pos_hint: {"center_x":.5 ,"center_y": .95}
+            MDIconButton:
+                icon:"keyboard-backspace"
+                theme_icon_color: "Custom"
+                icon_color: app.theme_cls.primary_color
+                on_release: app.root.current= "principal"
+                pos_hint: {"center_x":.091 ,"center_y": .5}
+
+
+
+            Label:
+                font_size: 18
+                color: (0,0,0,.9)
+                text: "PRODUCTO"
+        Carousel:
+            #color: (0,135/255,115/255, .4)
+            adaptive_height: True
+            spacing:50
+            padding:50
+            size_hint: 1,.25
+            pos_hint: {"center_x":.5 ,"center_y": .79}
+            MDRaisedButton:
+                md_bg_color: [0,135/255,115/255, .4]
+                size_hint: 1,1
+                #pos_hint: {"center_x":.75 ,"center_y": .8}
+                radius: 30
+                padding:25
+                on_release: app.root.current= "productos"
+
+
+                #pos_hint: {"center_x":.5 ,"center_y": .66}
+
+                Image:
+                    source: 'C:/env/kivy/IMAGENES/1.jpg'
+                    allow_stretch: True
+                    keep_ratio: False
+            MDRaisedButton:
+                md_bg_color: [0,135/255,115/255, .4]
+                size_hint: 1,1
+                #pos_hint: {"center_x":.75 ,"center_y": .8}
+                radius: 30
+                padding:25
+                on_release: app.root.current= "productos"
+
+
+                #pos_hint: {"center_x":.5 ,"center_y": .66}
+
+                Image:
+                    source: 'C:/env/kivy/IMAGENES/2.jpg'
+                    allow_stretch: True
+                    keep_ratio: False
+
+
+            MDRaisedButton:
+                md_bg_color: [0,135/255,115/255, .4]
+                size_hint: 1,1
+                #pos_hint: {"center_x":.75 ,"center_y": .8}
+                radius: 30
+                padding:25
+                on_release: app.root.current= "productos"
+
+
+                #pos_hint: {"center_x":.5 ,"center_y": .66}
+
+                Image:
+                    source: 'C:/env/kivy/IMAGENES/3.jpg'
+
+                    allow_stretch: True
+                    keep_ratio: False
+        MDGridLayout:
+            size_hint: 1,.15
+            pos_hint: {"center_x":.5 ,"center_y": .62}
+            cols: 3
+            Label:
+                font_size: 14
+                color: (0,0,0,.9)
+                text: "Categoria:"
+            Label:
+                font_size: 14
+                color: (0,0,0,.9)
+                text: "Tipo:"
+            Label:
+                font_size: 14
+                color: (0,0,0,.9)
+                text: "Talla:"
+            MDFillRoundFlatButton:
+                md_bg_color: (0,135/255,115/255, .1)
+                size_hint: 1., None
+
+                text_color:(0,65/255,85/255, .6)
+                pos_hint: {"center_x":.5 ,"center_y": .2}
+            MDFillRoundFlatButton:
+                md_bg_color: (0,135/255,115/255, .1)
+                size_hint: 1., None
+
+                text_color:(0,65/255,85/255, .6)
+                pos_hint: {"center_x":.5 ,"center_y": .2}
+            MDFillRoundFlatButton:
+                md_bg_color: (0,135/255,115/255, .1)
+                size_hint: 1., None
+
+                text_color:(0,65/255,85/255, .6)
+                pos_hint: {"center_x":.5 ,"center_y": .2}
+                spacing:20
+                padding:20
+        MDGridLayout:
+            size_hint: 1,.15
+            pos_hint: {"center_x":.5 ,"center_y": .47}
+            cols: 2
+            Label:
+                font_size: 14
+                color: (0,0,0,.9)
+                text: "Marca:"
+            Label:
+                font_size: 14
+                color: (0,0,0,.9)
+                text: "Modelo:"
+            MDFillRoundFlatButton:
+                md_bg_color: (0,135/255,115/255, .1)
+                size_hint: 1., None
+
+                text_color:(0,65/255,85/255, .6)
+
+            MDFillRoundFlatButton:
+                md_bg_color: (0,135/255,115/255, .1)
+                size_hint: 1., None
+
+                text_color:(0,65/255,85/255, .6)
+
+        MDRelativeLayout:
+            size_hint: .8,.25
+            pos_hint: {"center_x":.5 ,"center_y": .3}
+
+            Label:
+                font_size: 14
+                color: (0,0,0,.9)
+                text: "Descripcion:"
+                bold: True
+                pos_hint: {"center_x":.15 ,"center_y": .8}
+            TextInput:
+                text:" "
+                size_hint: 1,.7
+                color:(0,0,0,1)
+                #password: True
+        MDIconButton:
+            icon:"plus-circle-outline"
+            pos_hint: {"center_x":.5 ,"center_y": .15}
+
+
+
+
+
+
+
+        MDRelativeLayout:
+            radius:20
+            md_bg_color: [0,135/255,115/255, .4]
+
+
+            #size: 60,60
+            size_hint: .8,.06
+            pos_hint: {"center_x":.5 ,"center_y": .1}
+            MDRaisedButton:
+                size_hint: .5,1
+                pos_hint: {"center_x":.5}
+                md_bg_color: [0,0,0, 0]
+                on_release: app.root.current= "principal"
+
+                Label:
+                    font_size: 18
+                    color: (0,0,0,.9)
+                    text: "Nombre del negocio "

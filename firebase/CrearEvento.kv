@@ -1,0 +1,221 @@
+<CrearEvento>
+    ScrollView:
+        MDScreen:
+
+
+            size_hint:1,1
+            pos_hint: {"center_x":.5 ,"center_y": .5}
+            md_bg_color: [0,30/255,30/255,.1]
+
+            radius:25,25,0,0
+            MDRelativeLayout:
+                radius:20
+                md_bg_color: [0,135/255,115/255, .4]
+
+
+                #size: 60,60
+                size_hint: .8,.06
+                pos_hint: {"center_x":.5 ,"center_y": .95}
+                MDIconButton:
+                    icon:"keyboard-backspace"
+                    theme_icon_color: "Custom"
+                    icon_color: app.theme_cls.primary_color
+                    on_release: app.root.current= "eventos"
+                    pos_hint: {"center_x":.091 ,"center_y": .5}
+
+
+
+                Label:
+                    font_size: 18
+                    color: (0,0,0,.9)
+                    text: "EVENTO"
+
+            MDRelativeLayout:
+                size_hint: .8,.25
+                pos_hint: {"center_x":.5 ,"center_y": .76}
+
+                #md_bg_color: (0,135/255,115/255, .4)
+                Label:
+                    font_size: 14
+                    color: (0,0,0,.9)
+                    text: "Nombre de evento:"
+                    bold: True
+                    pos_hint: {"center_x":.23 ,"center_y": .95}
+                MDTextFieldRound:
+                    #background_color: (150/255,150/255,150/255,.2)
+                    size_hint: .40,.15
+                    pos_hint: {"center_x":.25 ,"center_y": .80}
+                    #color:(0,0,0,1)
+                    #password: True
+
+                MDRaisedButton:
+                    background_color: [0,135/255,115/255, 1]
+                    size_hint: .2,.4
+                    pos_hint: {"center_x":.75 ,"center_y": .8}
+                    radius: 25
+
+
+                    #pos_hint: {"center_x":.5 ,"center_y": .66}
+
+                    Image:
+                        source: ''
+                        allow_stretch: True
+                        keep_ratio: False
+                    MDIconButton:
+                        icon:"plus"
+                        pos_hint: {"center_x":.5 ,"center_y": .5}
+            Label:
+                font_size:18
+                color: (0,0,0,.9)
+                text: "Comienzo"
+                pos_hint: {"center_x":.5 ,"center_y": .76}
+            MDGridLayout:
+                radius: 15
+                size_hint: .8,.1
+                pos_hint: {"center_x":.5 ,"center_y": .69}
+                cols:2
+                rows:2
+                #spacing:35
+                md_bg_color: (0,135/255,115/255, .4)
+
+                Label:
+                    font_size:18
+                    color: (0,0,0,.9)
+                    text: "Fecha:"
+                    pos_hint: {"center_x":.35 ,"center_y": .9}
+                Label:
+                    font_size:18
+                    color: (0,0,0,.9)
+                    text: "Hora:"
+                    pos_hint: {"center_x":.65 ,"center_y": .9}
+                MDFillRoundFlatButton:
+                    md_bg_color: (0,135/255,115/255, .1)
+                    size_hint: 1., None
+
+                    text_color:(0,65/255,85/255, .6)
+                    pos_hint: {"center_x":.5 ,"center_y": .2}
+
+                MDFillRoundFlatButton:
+                    md_bg_color: (0,135/255,115/255, .1)
+                    size_hint: 1., None
+
+                    #on_release: app.root.current= "oferta"
+                    text_color:(0,65/255,85/255, .6)
+            Label:
+                font_size:18
+                color: (0,0,0,.9)
+                text: "Fin"
+                pos_hint: {"center_x":.5 ,"center_y": .61}
+            MDGridLayout:
+                radius: 15
+                size_hint: .8,.1
+                pos_hint: {"center_x":.5 ,"center_y": .54}
+                cols:2
+                rows:2
+                #spacing:35
+                md_bg_color: (0,135/255,115/255, .4)
+
+                Label:
+                    font_size:18
+                    color: (0,0,0,.9)
+                    text: "Fecha:"
+                    pos_hint: {"center_x":.35 ,"center_y": .9}
+                Label:
+                    font_size:18
+                    color: (0,0,0,.9)
+                    text: "Hora:"
+                    pos_hint: {"center_x":.65 ,"center_y": .9}
+                MDFillRoundFlatButton:
+                    md_bg_color: (0,135/255,115/255, .1)
+                    size_hint: 1., None
+
+                    text_color:(0,65/255,85/255, .6)
+                    pos_hint: {"center_x":.5 ,"center_y": .2}
+
+                MDFillRoundFlatButton:
+                    md_bg_color: (0,135/255,115/255, .1)
+                    size_hint: 1., None
+
+                    #on_release: app.root.current= "oferta"
+                    text_color:(0,65/255,85/255, .6)
+            MDGridLayout:
+                radius: 15
+                size_hint: .8,.08
+                pos_hint: {"center_x":.5 ,"center_y": .45}
+                cols:2
+                rows:2
+                spacing:5
+                #md_bg_color: (0,135/255,115/255, .4)
+
+                Label:
+                    font_size:18
+                    color: (0,0,0,.9)
+                    text: "Lugar:"
+                    pos_hint: {"center_x":.35 ,"center_y": .9}
+                Label:
+                    font_size:18
+                    color: (0,0,0,.9)
+                    text: "Capacidad:"
+                    pos_hint: {"center_x":.65 ,"center_y": .9}
+                MDFillRoundFlatButton:
+                    md_bg_color: (0,135/255,115/255, .1)
+                    size_hint: 1., .92
+
+                    text_color:(0,65/255,85/255, .6)
+                    pos_hint: {"center_x":.5 ,"center_y": .2}
+
+                MDFillRoundFlatButton:
+                    md_bg_color: (0,135/255,115/255, .1)
+                    size_hint: 1., .92
+
+                    #on_release: app.root.current= "oferta"
+                    text_color:(0,65/255,85/255, .6)
+            MDGridLayout:
+                radius: 15
+                size_hint: .8,.25
+                pos_hint: {"center_x":.5 ,"center_y": .3}
+                cols:1
+
+
+                #md_bg_color: (0,135/255,115/255, .4)
+
+                Label:
+                    font_size:18
+                    color: (0,0,0,.9)
+                    text: "Participantes:"
+                    pos_hint: {"center_x":.35 ,"center_y": .9}
+                MDFillRoundFlatButton:
+                    md_bg_color: (0,135/255,115/255, .1)
+                    size_hint: 1., .92
+
+                    text_color:(0,65/255,85/255, .6)
+
+                Label:
+                    font_size:18
+                    color: (0,0,0,.9)
+                    text: "Descricion:"
+
+                TextInput:
+                    md_bg_color: (0,135/255,115/255, .1)
+                    size_hint: 1., .92
+
+                    #on_release: app.root.current= "oferta"
+                    text_color:(0,65/255,85/255, .6)
+            MDRelativeLayout:
+                radius:20
+                md_bg_color: [0,135/255,115/255, .4]
+
+
+                #size: 60,60
+                size_hint: .8,.06
+                pos_hint: {"center_x":.5 ,"center_y": .1}
+                MDRaisedButton:
+                    size_hint: .5,1
+                    pos_hint: {"center_x":.5}
+                    md_bg_color: [0,0,0, 0]
+                    on_release: app.root.current= "tutienda"
+
+                    Label:
+                        font_size: 18
+                        color: (0,0,0,.9)
+                        text: "TU TIENDA"

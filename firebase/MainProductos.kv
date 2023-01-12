@@ -1,0 +1,333 @@
+<CrearProducto>:
+    MDScreen:
+
+
+
+        size_hint:1,1
+        pos_hint: {"center_x":.5 ,"center_y": .5}
+        md_bg_color: [0,30/255,30/255,.1]
+
+        radius:25,25,0,0
+        MDRelativeLayout:
+            radius:20
+            md_bg_color: [0,135/255,115/255, .4]
+
+
+            #size: 60,60
+            size_hint: .8,.06
+            pos_hint: {"center_x":.5 ,"center_y": .95}
+            MDIconButton:
+                icon:"keyboard-backspace"
+                theme_icon_color: "Custom"
+                icon_color: app.theme_cls.primary_color
+                on_release: app.root.current= "inventarios"
+                pos_hint: {"center_x":.091 ,"center_y": .5}
+
+
+
+            Label:
+                font_size: 18
+                color: (0,0,0,.9)
+                text: "PRODUCTO"
+        MDRelativeLayout:
+            size_hint: .8,.25
+            pos_hint: {"center_x":.5 ,"center_y": .75}
+
+            #md_bg_color: (0,135/255,115/255, .4)
+            Label:
+                font_size: 14
+                color: (0,0,0,.9)
+                text: "Nombre:"
+                bold: True
+                pos_hint: {"center_x":.15 ,"center_y": .95}
+            MDTextFieldRound:
+                id: nombre_producto
+                #background_color: (150/255,150/255,150/255,.2)
+                size_hint: .40,.15
+                pos_hint: {"center_x":.25 ,"center_y": .80}
+                #color:(0,0,0,1)
+                #password: True
+            Label:
+                font_size: 14
+                color: (0,0,0,.9)
+                text: "Categoria:"
+                bold: True
+                pos_hint: {"center_x":.15 ,"center_y": .55}
+            MDTextFieldRound:
+                #background_color: (150/255,150/255,150/255,.2)
+                size_hint: .40,.15
+                pos_hint: {"center_x":.25 ,"center_y": .40}
+                #color:(0,0,0,1)
+                #password: True
+            MDRaisedButton:
+                background_color: [0,135/255,115/255, 1]
+                size_hint: .4,.65
+                pos_hint: {"center_x":.75 ,"center_y": .6}
+
+
+                #pos_hint: {"center_x":.5 ,"center_y": .66}
+
+                Image:
+                    source: ''
+                    allow_stretch: True
+                    keep_ratio: False
+                MDIconButton:
+                    icon:"plus"
+                    pos_hint: {"center_x":.5 ,"center_y": .5}
+            Label:
+                font_size: 14
+                color: (0,0,0,.9)
+                text: "Cantidad:"
+                bold: True
+                pos_hint: {"center_x":.15 ,"center_y": .15}
+            MDTextFieldRound:
+                id: cant_producto
+                #background_color: (150/255,150/255,150/255,.2)
+                size_hint: .4,.15
+                pos_hint: {"center_x":.25 ,"center_y": .0}
+                #color:(0,0,0,1)
+                #password: True
+            Label:
+                font_size: 14
+                color: (0,0,0,.9)
+                text: "Precio Unitario:"
+                bold: True
+                pos_hint: {"center_x":.70 ,"center_y": .15}
+            MDTextFieldRound:
+                id: precio_producto
+                #background_color: (150/255,150/255,150/255,.2)
+                size_hint: .4,.15
+                pos_hint: {"center_x":.75 ,"center_y": .0}
+                #color:(0,0,0,1)
+                #password: True
+        MDRelativeLayout:
+            size_hint: .8,.25
+            pos_hint: {"center_x":.5 ,"center_y": .45}
+
+            Label:
+                font_size: 14
+                color: (0,0,0,.9)
+                text: "Descripción:"
+                bold: True
+                pos_hint: {"center_x":.15 ,"center_y": .9}
+            TextInput:
+                text:" "
+                size_hint: 1,.7
+                color:(0,0,0,1)
+                #password: True
+
+
+
+
+        MDGridLayout:
+            size_hint: .8,.2
+            pos_hint: {"center_x":.5 ,"center_y": .15}
+            cols:1
+            spacing:35
+
+
+            MDFillRoundFlatButton:
+                md_bg_color: (0,135/255,115/255, .4)
+                size_hint: 1., None
+                text:"Crear categoría"
+                text_color:(0,65/255,85/255, .6)
+
+
+        MDRelativeLayout:
+            radius:20
+            md_bg_color: [0,135/255,115/255, .4]
+
+
+            #size: 60,60
+            size_hint: .8,.06
+            pos_hint: {"center_x":.5 ,"center_y": .1}
+            MDRaisedButton:
+                size_hint: .5,1
+                pos_hint: {"center_x":.5}
+                md_bg_color: [0,0,0, 0]
+                on_release: app.save_product(nombre_producto.text,cant_producto.text,precio_producto.text)
+                on_release: app.root.current= "inventarios"
+
+                Label:
+                    font_size: 18
+                    color: (0,0,0,.9)
+                    text: "AGREGAR PRODUCTO"
+<EditarProducto>:
+    MDScreen:
+
+
+
+        size_hint:1,1
+        pos_hint: {"center_x":.5 ,"center_y": .5}
+        md_bg_color: [0,30/255,30/255,.1]
+
+        radius:25,25,0,0
+        MDRelativeLayout:
+            radius:20
+            md_bg_color: [0,135/255,115/255, .4]
+
+
+            #size: 60,60
+            size_hint: .8,.06
+            pos_hint: {"center_x":.5 ,"center_y": .95}
+            MDIconButton:
+                icon:"keyboard-backspace"
+                theme_icon_color: "Custom"
+                icon_color: app.theme_cls.primary_color
+                on_release: app.root.current= "inventarios"
+                pos_hint: {"center_x":.091 ,"center_y": .5}
+
+
+
+            Label:
+                font_size: 18
+                color: (0,0,0,.9)
+                text: "EDITAR PRODUCTOS"
+        MDRelativeLayout:
+            size_hint: .8,.25
+            pos_hint: {"center_x":.5 ,"center_y": .75}
+
+            #md_bg_color: (0,135/255,115/255, .4)
+            Label:
+                font_size: 14
+                color: (0,0,0,.9)
+                text: "Nombre:"
+                bold: True
+                pos_hint: {"center_x":.15 ,"center_y": .95}
+            MDTextFieldRound:
+                md_bg_color: [0,135/255,115/255, .4]
+                size_hint: .4,.15
+                pos_hint: {"center_x":.25 ,"center_y": .80}
+                #color:(0,0,0,1)
+                #password: True
+            Label:
+                font_size: 14
+                color: (0,0,0,.9)
+                text: "Categoria:"
+                bold: True
+                pos_hint: {"center_x":.15 ,"center_y": .6}
+
+
+            MDList:
+                id:container
+                text: "Lista"
+                md_bg_color: [0,135/255,115/255, .4]
+                radius: 15
+
+                size_hint: .4,.15
+                pos_hint: {"center_x":.25 ,"center_y": .45}
+
+                #background_colcontaineror: (150/255,150/255,150/255,.2)
+
+
+
+
+
+
+
+            MDRaisedButton:
+                background_color: [0,135/255,115/255, 1]
+                size_hint: .4,.65
+                pos_hint: {"center_x":.75 ,"center_y": .6}
+
+
+                #pos_hint: {"center_x":.5 ,"center_y": .66}
+                Image:
+                    source: 'C:/env/kivy/IMAGENES/1.jpg'
+                    allow_stretch: True
+                    keep_ratio: False
+            Label:
+                font_size: 14
+                color: (0,0,0,.9)
+                text: "Cantidad:"
+                bold: True
+                pos_hint: {"center_x":.15 ,"center_y": .15}
+            MDTextFieldRound:
+                #background_color: (150/255,150/255,150/255,.2)
+                size_hint: .4,.15
+                pos_hint: {"center_x":.25 ,"center_y": .0}
+                #color:(0,0,0,1)
+                #password: True
+            Label:
+                font_size: 14
+                color: (0,0,0,.9)
+                text: "Precio Unitario:"
+                bold: True
+                pos_hint: {"center_x":.70 ,"center_y": .15}
+            MDTextFieldRound:
+                #background_color: (150/255,150/255,150/255,.2)
+                size_hint: .4,.15
+                pos_hint: {"center_x":.75 ,"center_y": .0}
+                #color:(0,0,0,1)
+                #password: True
+        MDRelativeLayout:
+            size_hint: .8,.25
+            pos_hint: {"center_x":.5 ,"center_y": .50}
+
+            Label:
+                font_size: 14
+                color: (0,0,0,.9)
+                text: "Descripcion:"
+                bold: True
+                pos_hint: {"center_x":.15 ,"center_y": .85}
+            TextInput:
+                text:"Aqui ira toda la \ninformacion que yo necesito que aparezca cuando quiera  o eso creo"
+                size_hint: 1,.7
+                color:(0,0,0,1)
+                #password: True
+
+
+
+
+        MDGridLayout:
+            size_hint: .8,.2
+            pos_hint: {"center_x":.5 ,"center_y": .25}
+            cols:2
+            rows:2
+            spacing:35
+
+
+
+
+
+            MDFillRoundFlatButton:
+                md_bg_color: (0,135/255,115/255, .4)
+                size_hint: 1., None
+                text:"Editar"
+                #on_release: app.root.current= "editarproducto"
+                text_color:(0,65/255,85/255, .6)
+            MDFillRoundFlatButton:
+                md_bg_color: (0,135/255,115/255, .4)
+                size_hint: 1., None
+                text:"Eliminar"
+                text_color:(0,65/255,85/255, .6)
+            MDFillRoundFlatButton:
+                md_bg_color: (0,135/255,115/255, .4)
+                size_hint: 1., None
+                text:"Promociones"
+                text_color:(0,65/255,85/255, .6)
+            MDFillRoundFlatButton:
+                md_bg_color: (0,135/255,115/255, .4)
+                size_hint: 1., None
+                text:"Ofertas"
+                text_color:(0,65/255,85/255, .6)
+
+
+        MDRelativeLayout:
+            radius:20
+            md_bg_color: [0,135/255,115/255, .4]
+
+
+            #size: 60,60
+            size_hint: .8,.06
+            pos_hint: {"center_x":.5 ,"center_y": .1}
+            MDRaisedButton:
+                size_hint: .5,1
+                pos_hint: {"center_x":.5}
+                md_bg_color: [0,0,0, 0]
+                on_release: app.root.current= "tutienda"
+
+                Label:
+                    font_size: 18
+                    color: (0,0,0,.9)
+                    text: "TU TIENDA"

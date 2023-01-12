@@ -1,0 +1,492 @@
+#:include Inventario.kv
+#:include MainProductos.kv
+#:include CrearPromocion.kv
+#:include MainEventos.kv
+#:include CrearEvento.kv
+#:include UserCliente.kv
+Screen:
+    Recuperar:
+    Registro:
+    Contrase:
+    Negocio:
+    Cliente:
+    TuTienda:
+    Inventarios:
+    Eventos:
+    CrearProducto:
+    EditarProducto:
+    Principal:
+    Productos:
+
+
+<Recuperar>:
+    canvas:
+        Color:
+            rgba: app.theme_cls.primary_color
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [25, 0, 0, 0]
+    MDScreen:
+
+        name:"main"
+        specific_text_color: 0, 0, 1, 1
+        Label:
+            specific_text_color: 0, 0, 1, 1
+            text:'Bienvenido'
+
+
+            font_size: 20
+            pos_hint: {"center_x": 0.5,"center_y": 0.9}
+        Label:
+            text: "Ingrese a su sesion"
+            color:
+            pos_hint: {"center_x": 0.2,"center_y": 0.85}
+
+        MDCard:
+
+            cols:1
+            color: 'white'
+            radius: [20]
+            size_hint: None, None
+            size: 350,400
+            pos_hint: {"center_x": 0.5,"center_y": 0.5}
+            elevation: 20
+            #md_bg_color: [1, 30/55, 30/55, 1]
+            padding: 20
+            spacing: 30
+
+            BoxLayout:
+                id:'La&Tx1'
+                orientation: 'vertical'
+
+                #size_hint: None, None
+                pos: 1000, 350
+                pos_hint: {"center_x": 0.5,"center_y": 0.5}
+                size: 300,350
+                cols:1
+
+                MDLabel:
+
+                    text: "CORREO ELECTRONICO"
+                    color:'black'
+                    #font_style:'Button'
+                    font_size: 20
+                    halign: 'left'
+                    size_hint_y: None
+                    #padding_y: 15
+                    #elevation: 40
+                    size: self.texture_size
+                    #padding_y: 10
+
+                MDTextField:
+                    id: correo
+
+                    hint_text: "Ingrese correo"
+                    mode: "rectangle"
+                    #padding_y: 1
+                    pos_hint: {"center_x": 0.5,"center_y": 0.9}
+                    line_color_focus: 0, 1, 0, 1
+                MDLabel:
+                    text: "CONTRASEÑA"
+                    color:'black'
+                    #font_style:'Button'
+                    font_size: 20
+                    halign: 'left'
+                    size_hint_y: None
+                    #padding_y: 15
+                    #elevation: 40
+                    size: self.texture_size
+                    #padding_y: 10
+
+                MDTextField:
+                    id: contraseña
+
+                    hint_text: "Ingrese contraseña"
+                    #id: "next"
+                    mode: "rectangle"
+                    #padding_y: 1
+                    pos_hint: {"center_x": 0.5,"center_y": 0.9}
+                    line_color_focus: 0, 1, 0, 1
+                    password:True
+                    #on_release: app.root.current= "perfil"
+
+                MDFlatButton:
+                    text: "Olvide contraseña"
+                    text_color: 0, 0, 1, 1
+                    pos_hint: {"center_x": 0.16,"center_y": 0.3}
+                    spacing: 20
+                    on_release: app.root.current= "contrase"
+                BoxLayout:
+                    padding: 40
+                    spacing: 50
+
+                    MDRoundFlatButton:
+                        text: "Registrar"
+                        color:'white'
+                        size_hint: None, None
+                        size: self.texture_size
+                        size: 100,30
+                        on_release: app.root.current= "registro"
+
+                    MDRoundFlatButton:
+                        text: "Ingresar"
+                        color:'white'
+                        size_hint: None, None
+                        size: self.texture_size
+                        size: 100,30
+                        #pos_hint: {"center_x": 0.9}
+                        #on_release: app.root.get_data
+                        on_release: app.get_data(correo.text,contraseña.text)
+
+
+
+<Registro>
+    canvas:
+        Color:
+            rgba: app.theme_cls.primary_color
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [25, 0, 0, 0]
+    MDScreen:
+
+        name:"registro"
+        specific_text_color: 0, 0, 1, 1
+        Label:
+            specific_text_color: 0, 0, 1, 1
+            text:'TIPO DE REGISTRO'
+
+
+            font_size: 20
+            pos_hint: {"center_x": 0.5,"center_y": 0.9}
+
+        MDCard:
+
+            cols:1
+            color: 'white'
+            radius: [20]
+            size_hint: None, None
+            size: 350,400
+            pos_hint: {"center_x": 0.5,"center_y": 0.5}
+            elevation: 20
+            md_bg_color: [1, 30/55, 30/55, 1]
+            padding: 20
+            spacing: 30
+
+            BoxLayout:
+                id:'La&Tx1'
+                orientation: 'vertical'
+
+                #size_hint: None, None
+                pos: 1000, 350
+                pos_hint: {"center_x": 0.5,"center_y": 0.5}
+                size: 300,350
+                cols:1
+                padding: 70
+                spacing: 160
+
+                MDRoundFlatButton:
+                    text: "REGISTRARSE COMO NEGOCIO"
+                    mode: "rectangle"
+                    #padding_y: 1
+                    pos_hint: {"center_x": 0.5,"center_y": 0.9}
+                    line_color_focus: 0, 1, 0, 1
+                    on_release: app.root.current= "negocio"
+                MDRoundFlatButton:
+                    text: "REGISTRARSE COMO CLIENTE"
+                    mode: "rectangle"
+                    #padding_y: 1
+                    pos_hint: {"center_x": 0.5,"center_y": 0.9}
+                    line_color_focus: 0, 1, 0, 1
+                    on_release: app.root.current= "cliente"
+<Contrase>:
+    canvas:
+        Color:
+            rgba: app.theme_cls.primary_color
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [0, 0, 0, 0]
+    MDScreen:
+
+        Label:
+            specific_text_color: 0, 0, 1, 1
+            text:'REESTABLECER CONTRASEÑA'
+            font_size: 22
+            pos_hint: {"center_x": 0.5,"center_y": 0.9}
+        MDCard:
+
+            cols:1
+            color: 'white'
+            radius: [20]
+            size_hint: None, None
+            size: 350,400
+            pos_hint: {"center_x": 0.5,"center_y": 0.5}
+            elevation: 20
+            md_bg_color: [1, 30/55, 30/55, 1]
+            padding: 20
+            spacing: 30
+
+            BoxLayout:
+                id:'La&Tx1'
+                orientation: 'vertical'
+
+                #size_hint: None, None
+                pos: 1000, 350
+                pos_hint: {"center_x": 0.5,"center_y": 0.5}
+                size: 300,350
+                cols:1
+
+                MDLabel:
+                    text: "E-mail"
+                    color:'black'
+                    #font_style:'Button'
+                    font_size: 20
+                    halign: 'left'
+                    size_hint_y: None
+                    #padding_y: 15
+                    #elevation: 40
+                    size: self.texture_size
+                    #padding_y: 10
+
+                MDTextField:
+                    hint_text: "Ingrese E-mail"
+                    mode: "rectangle"
+                    #padding_y: 1
+                    pos_hint: {"center_x": 0.5,"center_y": 0.9}
+                    line_color_focus: 0, 1, 0, 1
+                BoxLayout:
+                    MDRoundFlatButton:
+                        text: "Enviar"
+                        color:'white'
+                        pos: 200,200
+                        pos_hint: {"center_x": 0.5,"center_y": 0.2}
+                        on_release: app.root.current= "recuperar"
+<Cliente>:
+    canvas:
+        Color:
+            rgba: app.theme_cls.primary_color
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [25, 0, 0, 0]
+    MDScreen:
+
+        name:"cliente"
+        specific_text_color: 0, 0, 1, 1
+
+
+        MDCard:
+
+            cols:1
+            color: 'white'
+
+            size_hint: None, None
+            size: 350,640
+            pos_hint: {"center_x": 0.5,"center_y": 0.5}
+            elevation: 20
+            #md_bg_color: [1, 30/55, 30/55, 1]
+            padding: 20
+            spacing: 30
+
+            BoxLayout:
+                id:'La&Tx1'
+                orientation: 'vertical'
+
+                #size_hint: None, None
+                pos: 1000, 350
+                pos_hint: {"center_x": 0.5,"center_y": 0.5}
+                size: 300,350
+                cols:1
+
+                MDLabel:
+                    text: "NOMBRES"
+                    color:'black'
+                    #font_style:'Button'
+                    font_size: 20
+                    halign: 'left'
+                    size_hint_y: None
+                    #padding_y: 15
+                    #elevation: 40
+                    size: self.texture_size
+                    #padding_y: 10
+
+                MDTextField:
+                    id: nombres_clientes
+                    hint_text: "Ingrese nombre"
+                    mode: "rectangle"
+                    #padding_y: 1
+                    pos_hint: {"center_x": 0.5,"center_y": 0.9}
+                    line_color_focus: 0, 1, 0, 1
+
+
+                MDLabel:
+                    text: "E-MAIL"
+                    color:'black'
+                    #font_style:'Button'
+                    font_size: 20
+                    halign: 'left'
+                    size_hint_y: None
+                    #padding_y: 15
+                    #elevation: 40
+                    size: self.texture_size
+                    #padding_y: 10
+
+                MDTextField:
+                    id: email_clientes
+                    hint_text: "Ingrese email"
+
+                    mode: "rectangle"
+                    #padding_y: 1
+                    pos_hint: {"center_x": 0.5,"center_y": 0.9}
+                    line_color_focus: 0, 1, 0, 1
+                MDLabel:
+                    text: "CONTRASEÑA"
+                    color:'black'
+                    #font_style:'Button'
+                    font_size: 20
+                    halign: 'left'
+                    size_hint_y: None
+                    #padding_y: 15
+                    #elevation: 40
+                    size: self.texture_size
+                    #padding_y: 10
+
+                MDTextField:
+                    id: claves_clientes
+                    hint_text: "Ingrese contraseña"
+
+                    mode: "rectangle"
+                    #padding_y: 1
+                    pos_hint: {"center_x": 0.5,"center_y": 0.9}
+                    line_color_focus: 0, 1, 0, 1
+
+                BoxLayout:
+
+
+                    MDRoundFlatButton:
+                        text: "Registrar"
+                        color:'white'
+
+                        size: 200,30
+
+
+                        pos_hint: {"center_x": 0.5,"center_y": 0.2}
+                        on_release: app.data_cliente(nombres_clientes.text,claves_clientes.text,email_clientes.text)
+                        #on_release: app.data_cliente1(nombres_clientes.text,email_clientes.text)
+
+                        on_release: app.root.current= "recuperar"
+<Negocio>:
+    canvas:
+        Color:
+            rgba: app.theme_cls.primary_color
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [25, 0, 0, 0]
+    MDScreen:
+
+        name:"negocio"
+        specific_text_color: 0, 0, 1, 1
+
+
+        MDCard:
+
+            cols:1
+            color: 'white'
+            radius: [20]
+            size_hint: None, None
+            size: 350,520
+            pos_hint: {"center_x": 0.5,"center_y": 0.5}
+            elevation: 20
+            #md_bg_color: [1, 30/55, 30/55, 1]
+            padding: 20
+            spacing: 30
+
+            BoxLayout:
+                id:'La&Tx1'
+                orientation: 'vertical'
+
+                #size_hint: None, None
+                pos: 1000, 350
+                pos_hint: {"center_x": 0.5,"center_y": 0.5}
+                size: 300,350
+                cols:1
+
+
+                MDLabel:
+                    text: "NOMBRE NEGOCIO"
+                    color:'black'
+                    #font_style:'Button'
+                    font_size: 20
+                    halign: 'left'
+                    size_hint_y: None
+                    #padding_y: 15
+                    #elevation: 40
+                    size: self.texture_size
+                    #padding_y: 10
+
+                MDTextField:
+                    id: nombres_negocios
+                    hint_text: "Ingrese nombre"
+
+                    mode: "rectangle"
+                    #padding_y: 1
+                    pos_hint: {"center_x": 0.5,"center_y": 0.9}
+                    line_color_focus: 0, 1, 0, 1
+                MDLabel:
+                    text: "E-MAIL"
+                    color:'black'
+                    #font_style:'Button'
+                    font_size: 20
+                    halign: 'left'
+                    size_hint_y: None
+                    #padding_y: 15
+                    #elevation: 40
+                    size: self.texture_size
+                    #padding_y: 10
+
+                MDTextField:
+                    id:email_negocios
+                    hint_text: "Ingrese E-mail"
+
+                    mode: "rectangle"
+                    #padding_y: 1
+                    pos_hint: {"center_x": 0.5,"center_y": 0.9}
+                    line_color_focus: 0, 1, 0, 1
+                MDLabel:
+                    text: "CONTRASEÑA"
+                    color:'black'
+                    #font_style:'Button'
+                    font_size: 20
+                    halign: 'left'
+                    size_hint_y: None
+                    #padding_y: 15
+                    #elevation: 40
+                    size: self.texture_size
+                    #padding_y: 10
+
+                MDTextField:
+                    id: claves_negocios
+                    hint_text: "Ingrese clave"
+
+                    mode: "rectangle"
+                    #padding_y: 1
+                    pos_hint: {"center_x": 0.5,"center_y": 0.9}
+                    line_color_focus: 0, 1, 0, 1
+
+                BoxLayout:
+                    padding: 40
+                    spacing: 50
+
+                    MDRoundFlatButton:
+                        text: "Registrar"
+                        color:'white'
+                        size_hint: None, None
+                        size: self.texture_size
+                        size: 100,30
+                        pos_hint: {"center_x": 0.5,"center_y": 0.2}
+                        on_release: app.data_negocio(nombres_negocios.text,claves_negocios.text,email_negocios.text)
+                        on_release: app.root.current= "recuperar"
+

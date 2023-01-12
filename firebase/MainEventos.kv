@@ -1,0 +1,106 @@
+<MainEventos>:
+    MDScreen:
+
+
+
+        size_hint:1,1
+        pos_hint: {"center_x":.5 ,"center_y": .5}
+        md_bg_color: [0,30/255,30/255,.1]
+
+        radius:25,25,0,0
+        MDRelativeLayout:
+            radius:20
+            md_bg_color: [0,135/255,115/255, .4]
+
+
+            #size: 60,60
+            size_hint: .8,.06
+            pos_hint: {"center_x":.5 ,"center_y": .95}
+            MDIconButton:
+                icon:"keyboard-backspace"
+                theme_icon_color: "Custom"
+                icon_color: app.theme_cls.primary_color
+                on_release: app.root.current= "eventos"
+                pos_hint: {"center_x":.091 ,"center_y": .5}
+            MDIconButton:
+                icon: "star-circle-outline"
+                tooltip_text: self.icon
+                pos_hint: {"center_x": .91, "center_y": .5}
+                theme_icon_color: "Custom"
+                icon_color: app.theme_cls.primary_color
+
+
+
+            Label:
+                font_size: 18
+                color: (0,0,0,.9)
+                text: "EVENTO 1"
+
+
+
+        MDIconButton:
+            icon: "account-group"
+            tooltip_text: self.icon
+            pos_hint: {"center_x": .85, "center_y": .89}
+
+
+        Carousel:
+            spacing:50
+            padding:50
+            size_hint: .7,.30
+            pos_hint: {"center_x":.5 ,"center_y": .7}
+            MDBoxLayout:
+                size_hint: 1,1
+                md_bg_color: [0,135/255,115/255, .4]
+                #spacing:20
+                padding:20
+
+                Image:
+                    source: 'C:/env/kivy/IMAGENES/1.jpg'
+            MDBoxLayout:
+                size_hint: 1,1
+                md_bg_color: [0,135/255,115/255, .4]
+                padding:20
+                Image:
+                    source: 'C:/env/kivy/IMAGENES/2.jpg'
+            MDBoxLayout:
+                size_hint: 1,1
+                md_bg_color: [0,135/255,115/255, .4]
+                padding:20
+                Image:
+                    source: 'C:/env/kivy/IMAGENES/3.jpg'
+
+        MDRelativeLayout:
+            size_hint: .8,.25
+            pos_hint: {"center_x":.5 ,"center_y": .45}
+
+            Label:
+                font_size: 18
+                color: (0,0,0,.9)
+                text: "Descripcion:"
+                bold: True
+                pos_hint: {"center_x":.15 ,"center_y": .85}
+            TextInput:
+                text:" "
+                size_hint: 1,.7
+                color:(0,0,0,1)
+                #password: True
+
+        MDRelativeLayout:
+            radius:20
+            md_bg_color: [0,135/255,115/255, .4]
+
+
+            #size: 60,60
+            size_hint: .8,.06
+            pos_hint: {"center_x":.5 ,"center_y": .1}
+            MDRaisedButton:
+                size_hint: .5,1
+                pos_hint: {"center_x":.5}
+                md_bg_color: [0,0,0, 0]
+                on_release: app.root.current= "tutienda"
+
+                Label:
+                    font_size: 18
+                    color: (0,0,0,.9)
+                    text: "TU TIENDA"

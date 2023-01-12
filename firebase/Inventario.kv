@@ -1,0 +1,562 @@
+#:include MainProductos.kv
+#:include CrearPromocion.kv
+#:include MainEventos.kv
+#:include CrearEvento.kv
+
+ClienteEmpresa:
+    Inventarios:
+    Eventos:
+    TuTienda:
+    CrearProducto:
+    EditarProducto:
+
+<TuTienda>:
+
+
+    MDScreen:
+        orientation:"vertical"
+        size_hint:.99,.99
+        pos_hint: {"center_x":.5 ,"center_y": .5}
+        md_bg_color: [0,30/255,30/255,.1]
+        padding:120
+        radius:25,25,25,25
+        MDToolbar:
+            title: 'Bottom navigation'
+            md_bg_color: .2, .2, .2, 1
+            specific_text_color: 1, 1, 1, 1
+            border_margin: 25
+        MDBottomNavigation:
+            background_color: .2, .2, .2, 1
+            MDBottomNavigationItem:
+                name: 'screen 1'
+                text: 'PERFIL'
+                icon: 'account-box'
+                #radius:10
+                #md_bg_color: [1,135/255,115/255, .4]
+
+
+
+                MDRelativeLayout:
+
+                    md_bg_color: [0,135/255,115/255, .4]
+
+                    radius: 25
+
+
+                    #size: 60,60
+                    size_hint: .8,.07
+                    pos_hint: {"center_x":.5 ,"center_y": .9}
+                    right_action_items: [['menu', lambda x: nav_drawer.toggle_nav_drawer()]]
+
+
+                    Label:
+                        text:"PERFIL"
+                        font_size:"24"
+                        halign:"center"
+                        pos_hint: {"center_x":.5 ,"center_y": .5}
+                MDRaisedButton:
+
+                    background_color: [0,135/255,115/255, 1]
+                    size_hint: .4,.25
+                    pos_hint: {"center_x":.5 ,"center_y": .7}
+
+
+                    #pos_hint: {"center_x":.5 ,"center_y": .66}
+                    Image:
+
+                        source: 'C:/env/kivy/IMAGENES/1.jpg'
+                        allow_stretch: True
+                        keep_ratio: False
+                Label:
+                    text:"INFORMACION"
+                    font_size:"20"
+                    halign:"center"
+                    color: (0,135/255,115/255, .4)
+                    pos_hint: {"center_x":.5 ,"center_y": .52}
+                MDRelativeLayout:
+
+                    md_bg_color: [.2,40/255,40/255, .1]
+
+
+
+                    #size: 60,60
+                    radius: 20
+                    size_hint: .8,.45
+                    pos_hint: {"center_x":.5 ,"center_y": .26}
+
+            MDBottomNavigationItem:
+
+                name: 'screen 2'
+                text: 'TU TIENDA'
+                icon: 'store'
+                radius:10
+                md_bg_color: [1,135/255,115/255, .4]
+
+
+
+
+                MDRelativeLayout:
+                    radius:20
+                    md_bg_color: [0,135/255,115/255, .4]
+
+
+                    #size: 60,60
+                    size_hint: .8,.06
+                    pos_hint: {"center_x":.5 ,"center_y": .9}
+
+                    Label:
+                        font_size: 18
+                        color: (0,0,0,.9)
+                        text: "TU TIENDA"
+
+                Label:
+                    font_size: 16
+                    pos_hint: {"center_x":.25 ,"center_y": .79}
+                    text: "INVENTARIO"
+                    color:(0,0,0,1)
+
+                MDScreen:
+
+
+                    background_color: [0,135/255,115/255, .4]
+
+
+                    #size: 60,60
+                    size_hint: .8,.35
+                    pos_hint: {"center_x":.5 ,"center_y": .60}
+                    MDRaisedButton:
+                        background_color: [0,135/255,115/255, 1]
+                        size_hint: 1,1
+                        #pos_hint: {"center_x":.5 ,"center_y": .66}
+                        on_release: app.root.current= "inventarios"
+                        Image:
+                            source: 'C:\env\kivy\IMAGENES\inventarios.png'
+                            allow_stretch: True
+                            keep_ratio: False
+
+
+
+                Label:
+                    font_size: 16
+                    pos_hint: {"center_x":.21 ,"center_y": .40}
+                    text: "EVENTOS"
+                    color:(0,0,0,1)
+                MDScreen:
+
+
+                    background_color: [0,135/255,115/255, .4]
+
+
+                    #size: 60,60
+                    size_hint: .8,.35
+                    pos_hint: {"center_x":.5 ,"center_y": .21}
+                    MDRaisedButton:
+                        background_color: [0,135/255,115/255, 1]
+                        size_hint: 1,1
+
+
+                        #pos_hint: {"center_x":.5 ,"center_y": .66}
+                        on_release: app.root.current= "eventos"
+                        Image:
+                            radius: 25
+                            source: 'C:\env\kivy\IMAGENES\eventos.png'
+                            allow_stretch: True
+                            keep_ratio: False
+
+            MDBottomNavigationItem:
+                name: 'screen 3'
+                text: 'VENTAS'
+                icon: 'point-of-sale'
+                radius:10
+                md_bg_color: [1,135/255,115/255, .4]
+                MDRelativeLayout:
+
+                    md_bg_color: [0,135/255,115/255, .4]
+
+                    radius: 25
+
+
+                    #size: 60,60
+                    size_hint: .8,.07
+                    pos_hint: {"center_x":.5 ,"center_y": .9}
+                    right_action_items: [['menu', lambda x: nav_drawer.toggle_nav_drawer()]]
+
+
+                    Label:
+                        text:"VENTAS"
+                        font_size:"24"
+                        halign:"center"
+                        pos_hint: {"center_x":.5 ,"center_y": .5}
+                MDTextField:
+
+                    pos_hint: {"center_x":.5 ,"center_y": .8}
+                    size_hint:.75,.1
+
+                MDIconButton:
+                    icon: "magnify"
+                    tooltip_text: self.icon
+                    pos_hint: {"center_x": .1, "center_y": .8}
+                MDIconButton:
+                    icon: "calendar-search"
+                    tooltip_text: self.icon
+                    pos_hint: {"center_x": .8, "center_y": .7}
+                ScrollView:
+
+
+                    size_hint: .8,.5
+                    pos_hint: {"center_x":.5 ,"center_y": .4}
+                    MDTabs:
+                        id:tabs
+                        pos_hint: {"center_x":1 ,"center_y": 1}
+                        size_hint: 1,1
+                        md_bg_color: (0,135/255,115/255, .4)
+
+
+
+
+
+                        MDTabsBase:
+                            title: "Dia"
+
+
+                            MDFloatLayout:
+                                size: root.width, root.height
+
+
+                                MDRaisedButton:
+
+                                    text_color: 0, 0, 0, 1
+
+                                    line_color: 1, 1, 1, 1
+                                    text:"Evento 1"
+                                    size_hint:.6,.05
+                                    pos_hint: {"center_x": .4, "center_y": .4}
+
+
+
+                        MDTabsBase:
+                            title: "Mes"
+                            MDFloatLayout:
+                                size: root.width, root.height
+
+
+
+                                MDRoundFlatButton:
+                                    text_color: 0, 0, 0, 1
+
+                                    line_color: 1, 1, 1, 1
+                                    text:"Evento 1"
+                                    size_hint:.6,.05
+                                    pos_hint: {"center_x": .4, "center_y": .4}
+
+                        MDTabsBase:
+                            title: "Año"
+                            MDFloatLayout:
+                                size: root.width, root.height
+                MDRelativeLayout:
+                    radius:20
+                    md_bg_color: [0,135/255,115/255, .4]
+
+
+                    #size: 60,60
+                    size_hint: .6,.06
+                    pos_hint: {"center_x":.5 ,"center_y": .1}
+                    MDRaisedButton:
+                        size_hint: .9,1
+                        pos_hint: {"center_x":.5}
+                        md_bg_color: [0,0,0, 0]
+                        on_release: app.root.current= "crearproducto"
+                        Label:
+                            text: "Generar Reporte"
+                            font_size: 16
+                            color:(2,42/228,24/228, .7)
+
+
+<Inventarios>:
+
+    MDScreen:
+
+
+
+        size_hint:1,1
+        pos_hint: {"center_x":.5 ,"center_y": .5}
+        md_bg_color: [0,30/255,30/255,.1]
+
+        radius:25,25,0,0
+        MDRelativeLayout:
+            radius:20
+            md_bg_color: [0,135/255,115/255, .4]
+
+
+            #size: 60,60
+            size_hint: .8,.06
+            pos_hint: {"center_x":.5 ,"center_y": .95}
+            MDIconButton:
+                icon:"keyboard-backspace"
+                theme_icon_color: "Custom"
+                icon_color: app.theme_cls.primary_color
+                on_release: app.root.current= "tutienda"
+                pos_hint: {"center_x":.091 ,"center_y": .5}
+
+
+
+            Label:
+                font_size: 18
+                color: (0,0,0,.9)
+                text: "INVENTARIO"
+        MDTextField:
+
+            pos_hint: {"center_x":.5 ,"center_y": .89}
+            size_hint:.75,.1
+
+        MDIconButton:
+            icon: "magnify"
+            tooltip_text: self.icon
+            pos_hint: {"center_x": .1, "center_y": .89}
+
+        MDRelativeLayout:
+            radius:20
+            md_bg_color: [0,135/255,115/255, .4]
+
+
+            #size: 60,60
+            size_hint: .45,.06
+            pos_hint: {"center_x":.5 ,"center_y": .82}
+            MDRaisedButton:
+                size_hint: .9,1
+                pos_hint: {"center_x":.5}
+                md_bg_color: [0,0,0, 0]
+                on_release: app.root.current= "crearproducto"
+                Label:
+                    text: "Agregar Producto"
+                    font_size: 16
+                    color:(0,65/255,85/255, .6)
+        MDIconButton:
+            icon: "filter"
+            tooltip_text: self.icon
+            pos_hint: {"center_x": .1, "center_y": .82}
+
+
+        MDScreen:
+
+
+            background_color: [0,135/255,115/255, .4]
+
+
+            #size: 60,60
+            size_hint: .8,.40
+            pos_hint: {"center_x":.5 ,"center_y": .57}
+            ScrollView:
+
+
+        MDGridLayout:
+            size_hint: .8,.2
+            pos_hint: {"center_x":.5 ,"center_y": .25}
+            cols:2
+            rows:2
+            spacing:35
+
+
+            MDFillRoundFlatButton:
+                md_bg_color: (0,135/255,115/255, .4)
+                size_hint: 1., None
+                text:"Promociones"
+                on_release: app.root.current= "crearpromocion"
+                text_color:(0,65/255,85/255, .6)
+
+            MDFillRoundFlatButton:
+                md_bg_color: (0,135/255,115/255, .4)
+                size_hint: 1., None
+                text:"Editar"
+                on_release: app.root.current= "editarproducto"
+                text_color:(0,65/255,85/255, .6)
+            MDFillRoundFlatButton:
+                md_bg_color: (0,135/255,115/255, .4)
+                size_hint: 1., None
+                text:"Generar reporte"
+                text_color:(0,65/255,85/255, .6)
+        MDRelativeLayout:
+            radius:20
+            md_bg_color: [0,135/255,115/255, .4]
+
+
+            #size: 60,60
+            size_hint: .8,.06
+            pos_hint: {"center_x":.5 ,"center_y": .1}
+            MDRaisedButton:
+                size_hint: .5,1
+                pos_hint: {"center_x":.5}
+                md_bg_color: [0,0,0, 0]
+                on_release: app.root.current= "tutienda"
+
+                Label:
+                    font_size: 18
+                    color: (0,0,0,.9)
+                    text: "TU TIENDA"
+
+<Eventos>:
+    MDScreen:
+
+
+
+        size_hint:1,1
+        pos_hint: {"center_x":.5 ,"center_y": .5}
+        md_bg_color: [0,30/255,30/255,.1]
+
+        radius:25,25,0,0
+        MDRelativeLayout:
+            radius:20
+            md_bg_color: [0,135/255,115/255, .4]
+
+
+            #size: 60,60
+            size_hint: .8,.06
+            pos_hint: {"center_x":.5 ,"center_y": .95}
+            MDIconButton:
+                icon:"keyboard-backspace"
+                theme_icon_color: "Custom"
+                icon_color: app.theme_cls.primary_color
+                on_release: app.root.current= "tutienda"
+                pos_hint: {"center_x":.091 ,"center_y": .5}
+
+
+
+            Label:
+                font_size: 18
+                color: (0,0,0,.9)
+                text: "EVENTOS"
+        MDTextField:
+
+            pos_hint: {"center_x":.5 ,"center_y": .89}
+            size_hint:.75,.1
+
+        MDIconButton:
+            icon: "magnify"
+            tooltip_text: self.icon
+            pos_hint: {"center_x": .1, "center_y": .89}
+        MDIconButton:
+            icon: "star-circle-outline"
+            tooltip_text: self.icon
+            pos_hint: {"center_x": .91, "center_y": .89}
+
+
+        ScrollView:
+
+
+            size_hint: .8,.55
+            pos_hint: {"center_x":.5 ,"center_y": .55}
+            MDTabs:
+                id:tabs
+                pos_hint: {"center_x":1 ,"center_y": 1}
+                size_hint: 1,1
+                md_bg_color: (0,135/255,115/255, .4)
+
+
+
+
+
+                MDTabsBase:
+                    title: "Todos"
+
+
+                    MDFloatLayout:
+                        size: root.width, root.height
+
+
+                        MDRaisedButton:
+
+                            text_color: 0, 0, 0, 1
+
+                            line_color: 1, 1, 1, 1
+                            text:"Evento 1"
+                            size_hint:.6,.05
+                            pos_hint: {"center_x": .4, "center_y": .4}
+
+                        MDRoundFlatButton:
+                            text_color: 0, 0, 0, 1
+                            line_color: 1, 1, 1, 1
+                            text:"Evento 2"
+                            size_hint:.6,.05
+                            pos_hint: {"center_x": .4, "center_y": .32}
+                            on_release: app.root.current= "maineventos"
+                        MDRoundFlatButton:
+                            text_color: 0, 0, 0, 1
+                            line_color: 1, 1, 1, 1
+                            text:"Evento 3"
+                            size_hint:.6,.05
+                            pos_hint: {"center_x": .4, "center_y": .24}
+                            on_release: app.root.current= "maineventos"
+                        MDRoundFlatButton:
+                            text_color: 0, 0, 0, 1
+                            line_color: 1, 1, 1, 1
+                            text:"Evento 4"
+                            size_hint:.6,.05
+                            pos_hint: {"center_x": .4, "center_y": .16}
+                            on_release: app.root.current= "maineventos"
+
+                MDTabsBase:
+                    title: "Mis eventos"
+                    MDFloatLayout:
+                        size: root.width, root.height
+
+
+
+                        MDRoundFlatButton:
+                            text_color: 0, 0, 0, 1
+
+                            line_color: 1, 1, 1, 1
+                            text:"Evento 1"
+                            size_hint:.6,.05
+                            pos_hint: {"center_x": .4, "center_y": .4}
+                            on_release: app.root.current= "maineventos"
+                        MDRoundFlatButton:
+                            text_color: 0, 0, 0, 1
+                            line_color: 1, 1, 1, 1
+                            text:"Evento 2"
+                            size_hint:.6,.05
+                            pos_hint: {"center_x": .4, "center_y": .32}
+                            on_release: app.root.current= "maineventos"
+                        MDRoundFlatButton:
+                            text_color: 0, 0, 0, 1
+                            line_color: 1, 1, 1, 1
+                            text:"Evento 3"
+                            size_hint:.6,.05
+                            pos_hint: {"center_x": .4, "center_y": .24}
+                            on_release: app.root.current= "maineventos"
+                        MDRoundFlatButton:
+                            text_color: 0, 0, 0, 1
+                            line_color: 1, 1, 1, 1
+                            text:"Evento 4"
+                            size_hint:.6,.05
+                            pos_hint: {"center_x": .4, "center_y": .16}
+
+        MDIconButton:
+            icon: "account-multiple-plus"
+            tooltip_text: self.icon
+            pos_hint: {"center_x": .85, "center_y": .2}
+            size_hint: .4 ,.4
+            on_release: app.root.current= "crearevento"
+
+
+
+
+
+
+        MDRelativeLayout:
+            radius:20
+            md_bg_color: [0,135/255,115/255, .4]
+
+
+            #size: 60,60
+            size_hint: .8,.06
+            pos_hint: {"center_x":.5 ,"center_y": .1}
+            MDRaisedButton:
+                size_hint: .5,1
+                pos_hint: {"center_x":.5}
+                md_bg_color: [0,0,0, 0]
+                on_release: app.root.current= "tutienda"
+
+                Label:
+                    font_size: 18
+                    color: (0,0,0,.9)
+                    text: "TU TIENDA"
