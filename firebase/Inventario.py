@@ -72,31 +72,16 @@ class InventarioApp(MDApp):
         return CE
 
     # LOGIN USUARIOS
-    def get_data(self, correo,contraseña):
+    def save_product(self, nombre_producto, cant_producto, precio_producto, description):
 
-        comp = db1.child('Negocios').order_by_child("Email").equal_to(correo).get()
-        try:
-            auth1.sign_in_with_email_and_password(correo, contraseña)
-            for i in comp.val():
-                if correo == comp.val()[i]['Email'] and contraseña == comp.val()[i]['Claves'] and '2' == comp.val()[i]['Id']:
-
-                    if True:
-                        print("si1")
-        except:
-            print("Estan mal las credenciales1")
-        comp1 = db1.child('Clientes').order_by_child("Email").equal_to(correo).get()
-        try:
-            auth1.sign_in_with_email_and_password(correo, contraseña)
-            for j in comp1.val():
-                if correo == comp1.val()[j]['Email'] and contraseña == comp1.val()[j]['Claves'] and '1' == comp1.val()[j]['Id']:
-                    #auth.sign_in_with_email_and_password(correo, contraseña)
-                    print("si2")
-        except:
-            print("Estan mal las credenciales2")
-
-
-
-
+        data = {
+            "Id": '2',
+            'Nombre_producto': nombre_producto,
+            'cantidad': cant_producto,
+            'precio': precio_producto,
+            'descripcion': description
+        }
+        db1.child("Productos").child().push(data)
 
 
 if __name__== '__main__':

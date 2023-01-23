@@ -69,7 +69,7 @@ class MainApp(MDApp):
         sm.add_widget(Negocio(name="negocio"))
         sm.add_widget(Cliente(name="cliente"))
         sm.add_widget(TuTienda(name="tutienda"))
-        sm.add_widget(Inventarios(name="inventario"))
+        sm.add_widget(Inventarios(name="inventarios"))
         sm.add_widget(CrearProducto(name="crearproducto"))
         sm.add_widget(EditarProducto(name="editarproducto"))
         sm.add_widget(Eventos(name="eventos"))
