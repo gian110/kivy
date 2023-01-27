@@ -87,34 +87,34 @@ class MainApp(MDApp):
     def data_cliente(self,nombres_clientes, claves_clientes,email_clientes):
         try:
             auth.create_user_with_email_and_password(email_clientes,claves_clientes)
-
+            if True:
+                data = {
+                    "Id": '1',
+                    'Nombre': nombres_clientes,
+                    'Claves': claves_clientes,
+                    'Email': email_clientes
+                }
+                db.child("Clientes").child().push(data)
         except:
             print("Ya existe usuario")
-        if True:
-            data = {
-                "Id": '1',
-                'Nombre': nombres_clientes,
-                'Claves': claves_clientes,
-                'Email': email_clientes
-            }
-            db.child("Clientes").child().push(data)
+
 
 
     def data_negocio(self, nombres_negocios, claves_negocios, email_negocios):
 
         try:
             auth.create_user_with_email_and_password(email_negocios,claves_negocios)
-
+            if True:
+                data = {
+                    "Id": '2',
+                    'Nombre': nombres_negocios,
+                    'Claves': claves_negocios,
+                    'Email': email_negocios
+                }
+                db.child("Negocios").child().push(data)
         except:
             print("Ya existe Usuario")
-        if True:
-            data = {
-                "Id": '2',
-                'Nombre': nombres_negocios,
-                'Claves': claves_negocios,
-                'Email': email_negocios
-            }
-            db.child("Negocios").child().push(data)
+
     # LOGIN USUARIOS
     def get_data(self, correo,contraseña):
 
