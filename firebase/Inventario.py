@@ -10,6 +10,9 @@ from kivy.lang import Builder
 from kivymd.uix.list import OneLineListItem
 
 from kivymd.uix.menu import MDDropdownMenu
+from kivy.metrics import dp
+from kivy.properties import StringProperty
+
 
 firebaseConfig={'apiKey': "AIzaSyCw35eQBOfgBHQxC4P4WUmiXLwNWafOKZw",
      'authDomain': "proyecto-compy.firebaseapp.com",
@@ -70,6 +73,8 @@ class InventarioApp(MDApp):
         CE.add_widget(CrearEvento(name="crearevento"))
 
         return CE
+
+
 
     # LOGIN USUARIOS
     def save_product(self, nombre_producto, cant_producto, precio_producto, description):

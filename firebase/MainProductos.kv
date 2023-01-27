@@ -1,8 +1,6 @@
 <CrearProducto>:
     MDScreen:
 
-
-
         size_hint:1,1
         pos_hint: {"center_x":.5 ,"center_y": .5}
         md_bg_color: [0,30/255,30/255,.1]
@@ -53,12 +51,15 @@
                 text: "Categoria:"
                 bold: True
                 pos_hint: {"center_x":.15 ,"center_y": .55}
-            MDTextFieldRound:
-                #background_color: (150/255,150/255,150/255,.2)
+
+            MDDropDownItem:
+                id: drop_item
+                text: 'Item 0'
+                on_release: app.root.open()
                 size_hint: .40,.15
                 pos_hint: {"center_x":.25 ,"center_y": .40}
                 #color:(0,0,0,1)
-                #password: True
+
             MDRaisedButton:
                 background_color: [0,135/255,115/255, 1]
                 size_hint: .4,.65
