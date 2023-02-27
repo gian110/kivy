@@ -1,13 +1,11 @@
 import Main
 import pyrebase
 import re
-from firebase import firebase
-
 from kivy.uix.screenmanager import Screen, ScreenManager, WipeTransition
 from kivymd.app import MDApp
 from  kivy.core.window import Window
-storage1=Main.firebase
 
+storage1=Main.firebase
 db=storage1.database()
 nombre = Main.MainApp.data_cliente
 
