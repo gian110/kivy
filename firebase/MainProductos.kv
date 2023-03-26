@@ -54,11 +54,9 @@
 
             MDDropDownItem:
                 id: drop_item
-                text: 'Item 0'
-                on_release: app.root.open()
-                size_hint: .40,.15
                 pos_hint: {"center_x":.25 ,"center_y": .40}
-                #color:(0,0,0,1)
+                text: 'Seleccionar'
+                on_release: root.menu.open()
 
             MDRaisedButton:
                 background_color: [0,135/255,115/255, 1]
@@ -147,7 +145,7 @@
                 size_hint: .5,1
                 pos_hint: {"center_x":.5}
                 md_bg_color: [0,0,0, 0]
-                on_release: app.save_product(nombre_producto.text,cant_producto.text, precio_producto.text, description.text)
+                on_release: root.save_product(nombre_producto.text,cant_producto.text, precio_producto.text, description.text)
                 on_release: app.root.current= "inventarios"
 
                 Label:
@@ -208,24 +206,6 @@
                 text: "Categoria:"
                 bold: True
                 pos_hint: {"center_x":.15 ,"center_y": .6}
-
-
-            MDList:
-                id:container
-                text: "Lista"
-                md_bg_color: [0,135/255,115/255, .4]
-                radius: 15
-
-                size_hint: .4,.15
-                pos_hint: {"center_x":.25 ,"center_y": .45}
-
-                #background_colcontaineror: (150/255,150/255,150/255,.2)
-
-
-
-
-
-
 
             MDRaisedButton:
                 background_color: [0,135/255,115/255, 1]

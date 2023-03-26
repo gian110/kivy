@@ -1,18 +1,10 @@
-
 import pyrebase
 from kivymd.app import MDApp
-
 from kivy.uix.screenmanager import Screen, ScreenManager
-
 from kivy.core.window import Window
-from kivymd.uix.list import MDList
-from kivy.lang import Builder
-from kivymd.uix.list import OneLineListItem
-
 from kivymd.uix.menu import MDDropdownMenu
 from kivy.metrics import dp
-from kivy.properties import StringProperty
-
+from kivymd.uix.screen import MDScreen
 
 firebaseConfig={'apiKey': "AIzaSyCw35eQBOfgBHQxC4P4WUmiXLwNWafOKZw",
      'authDomain': "proyecto-compy.firebaseapp.com",
@@ -30,38 +22,81 @@ auth1=firebase.auth()
 
 class ClienteEmpresa(ScreenManager):
     pass
-class TuTienda(Screen):
+class TuTienda(MDScreen):
     pass
-class Inventarios(Screen):
+class Inventarios(MDScreen):
     pass
-class CrearProducto(Screen):
+class CrearProducto(MDScreen):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.select_item = None
+
+    def on_enter(self, *args):
+        self.set_menu_items()
+        # PROBABILIDAD DE BORRAR EL MÉTODO, SE DEBE CORREGIR EL SELF.SCREEN
+    def set_menu_items(self):
+        datos = []
+        # CREAR CONDICIONAL PARA SABER SI SE CREARÁ PRODUCTO O SERVICIO Y HACER LA OBTENCIÓN RESPECTIVA
+        data = db1.child("categorias").child("producto").get()
+        for dato in data.val():
+            if dato != None:
+                datos.append(str(dato))
+        menu_items = [
+            {
+                "viewclass": "OneLineListItem",
+                "text": f"{dato}",
+                "height": dp(40),
+                "on_release": lambda x=f"{dato}": self.set_item(x),
+            } for dato in datos
+        ]
+        self.menu = MDDropdownMenu(
+            caller=self.ids.drop_item,
+            items=menu_items,
+            width_mult=2,
+        )
+        self.menu.bind()
+
+    def set_item(self, text_item):
+        self.ids.drop_item.set_item(text_item)
+        self.menu.dismiss()
+        self.select_item = text_item
+
+        # GUARDAR DATOS
+
+    def save_product(self, nombre_producto, cant_producto, precio_producto, description):
+        if self.select_item is not None:
+            categoria=self.select_item
+            data = {
+                "Id": '2',
+                'Nombre_producto': nombre_producto,
+                'cantidad': cant_producto,
+                'precio': precio_producto,
+                'categoria': categoria,
+                'descripcion': description
+            }
+        # ESTE ESPACIO SERÍA PARA CREAR EL CONDICIONAL Y AUTENTICAR AL USUARIO
+            db1.child("Productos").child().push(data)
+class EditarProducto(MDScreen):
     pass
-class EditarProducto(Screen):
+class Eventos(MDScreen):
     pass
-class Eventos(Screen):
+class MainEventos(MDScreen):
     pass
-class MainEventos(Screen):
+class CrearPromocion(MDScreen):
     pass
-class CrearPromocion(Screen):
+class Oferta(MDScreen):
     pass
-class Oferta(Screen):
-    pass
-class CrearEvento(Screen):
+class CrearEvento(MDScreen):
     pass
 Window.size = (360, 640)
 
-
-
 #obtengo= Main.MainApp()
 #print(getattr(obtengo,'correo'))
-
-
 
 class InventarioApp(MDApp):
 
     def build(self):
         CE= ScreenManager()
-
         CE.add_widget(TuTienda(name="tutienda"))
         CE.add_widget(Inventarios(name="inventarios"))
         CE.add_widget(CrearProducto(name="crearproducto"))
@@ -71,22 +106,8 @@ class InventarioApp(MDApp):
         CE.add_widget(CrearPromocion(name="crearpromocion"))
         CE.add_widget(Oferta(name="oferta"))
         CE.add_widget(CrearEvento(name="crearevento"))
-
         return CE
 
-
-
-    # LOGIN USUARIOS
-    def save_product(self, nombre_producto, cant_producto, precio_producto, description):
-
-        data = {
-            "Id": '2',
-            'Nombre_producto': nombre_producto,
-            'cantidad': cant_producto,
-            'precio': precio_producto,
-            'descripcion': description
-        }
-        db1.child("Productos").child().push(data)
 
 
 if __name__== '__main__':
