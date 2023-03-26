@@ -7,6 +7,9 @@ from kivy.uix.screenmanager import Screen, ScreenManager, WipeTransition
 from kivymd.app import MDApp
 from  kivy.core.window import Window
 from collections import OrderedDict
+from kivy.clock import Clock
+Clock.max_iteration = 1000
+
 firebaseConfig={'apiKey': "AIzaSyCw35eQBOfgBHQxC4P4WUmiXLwNWafOKZw",
      'authDomain': "proyecto-compy.firebaseapp.com",
      'databaseURL': "https://proyecto-compy-default-rtdb.firebaseio.com/",
