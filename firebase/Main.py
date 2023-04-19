@@ -30,7 +30,6 @@ class Principal(UserCliente.Principal):
     pass
 class Productos(UserCliente.Productos):
     pass
-
 #Clases USUARIO NEGOCIO
 class TuTienda(Inventario.TuTienda):
     pass
@@ -50,8 +49,6 @@ class Oferta(Inventario.Oferta):
     pass
 class CrearEventos(Inventario.CrearEvento):
     pass
-
-
 class Recuperar(Screen):
     pass
 class Registro(Screen):
@@ -84,9 +81,12 @@ class MainApp(MDApp):
         sm.add_widget(Productos(name="productos"))
         return sm
 
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.save_contact = None
+
 #print("loggeado")
     #REGISTRO USUARIOS
-
     def data_cliente(self,nombres_clientes, claves_clientes,email_clientes):
         try:
             auth.create_user_with_email_and_password(email_clientes,claves_clientes)
@@ -121,28 +121,34 @@ class MainApp(MDApp):
     # LOGIN USUARIOS
     def get_data(self, correo,contraseña):
 
-        comp = db.child('Negocios').order_by_child("Email").equal_to(correo).get()
-        try:
-            auth.sign_in_with_email_and_password(correo, contraseña)
-            for i in comp.val():
-                if correo == comp.val()[i]['Email'] and contraseña == comp.val()[i]['Claves'] and '2' == comp.val()[i]['Id']:
+        comp = db.child('Negocios').order_by_child("Email").equal_to(correo).get().val()
+        #CON .KEYS() OBTENGO EL NOMBRE DE LA TABLA DE REGISTROS, SE REQUIERE MODICAR LA PARTE DE CREACIÓN DE CUENTA
+        if comp != []:
+            self.save_contact=comp.keys()
+            print(self.save_contact)
 
-                    if True:
-                        self.root.current = 'tutienda'
-        except:
-            print("Estan mal las credenciales1")
-        comp1 = db.child('Clientes').order_by_child("Email").equal_to(correo).get()
-        try:
-            auth.sign_in_with_email_and_password(correo, contraseña)
-            for j in comp1.val():
-                if correo == comp1.val()[j]['Email'] and contraseña == comp1.val()[j]['Claves'] and '1' == comp1.val()[j]['Id']:
-                    #auth.sign_in_with_email_and_password(correo, contraseña)
-                    if True:
+            try:
+                auth.sign_in_with_email_and_password(correo, contraseña)
+                for i in comp:
+                    if correo == comp[i]['Email'] and contraseña == comp[i]['Claves'] and comp[i]['Id'] == '2':
 
-                        self.root.current = 'principal'
-        except:
-            print("Estan mal las credenciales2")
+                        if True:
+                            self.root.current = 'tutienda'
+            except:
+                print("Estan mal las credenciales1")
+            comp1 = db.child('Clientes').order_by_child("Email").equal_to(correo).get()
+            try:
+                auth.sign_in_with_email_and_password(correo, contraseña)
+                for j in comp1.val():
+                    if correo == comp1.val()[j]['Email'] and contraseña == comp1.val()[j]['Claves'] and '1' == comp1.val()[j]['Id']:
+                        #auth.sign_in_with_email_and_password(correo, contraseña)
+                        if True:
 
+                            self.root.current = 'principal'
+            except:
+                print("Estan mal las credenciales2")
+        else:
+            print("Ingrese datos de login")
 
 
 

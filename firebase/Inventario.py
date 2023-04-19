@@ -5,6 +5,8 @@ from kivy.core.window import Window
 from kivymd.uix.menu import MDDropdownMenu
 from kivy.metrics import dp
 from kivymd.uix.screen import MDScreen
+from kivymd.uix.button import MDFlatButton
+from kivymd.uix.dialog import MDDialog
 
 firebaseConfig={'apiKey': "AIzaSyCw35eQBOfgBHQxC4P4WUmiXLwNWafOKZw",
      'authDomain': "proyecto-compy.firebaseapp.com",
@@ -18,7 +20,7 @@ firebase=pyrebase.initialize_app(firebaseConfig)
 #firebasea = firebase.FirebaseApplication('https://proyecto-compy-default-rtdb.firebaseio.com/', None)
 db1=firebase.database()
 auth1=firebase.auth()
-
+valorElegido=None
 
 class ClienteEmpresa(ScreenManager):
     pass
@@ -26,21 +28,32 @@ class TuTienda(MDScreen):
     pass
 class Inventarios(MDScreen):
     pass
+
 class CrearProducto(MDScreen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.select_item = None
+        #FALTA CONSEGUIR LA VARIABLE DE INVENTARIOAPP
+        self.valChoose=valorElegido
+
 
     def on_enter(self, *args):
         self.set_menu_items()
-        # PROBABILIDAD DE BORRAR EL MÉTODO, SE DEBE CORREGIR EL SELF.SCREEN
+        print(self.valChoose)
+
     def set_menu_items(self):
         datos = []
         # CREAR CONDICIONAL PARA SABER SI SE CREARÁ PRODUCTO O SERVICIO Y HACER LA OBTENCIÓN RESPECTIVA
-        data = db1.child("categorias").child("producto").get()
-        for dato in data.val():
-            if dato != None:
-                datos.append(str(dato))
+        if self.valChoose == 1:
+            data = db1.child("categorias").child("producto").get()
+            for dato in data.val():
+                if dato != None:
+                    datos.append(str(dato))
+        elif self.valChoose ==2:
+            data = db1.child("categorias").child("servicios").get()
+            for dato in data.val():
+                if dato != None:
+                    datos.append(str(dato))
         menu_items = [
             {
                 "viewclass": "OneLineListItem",
@@ -71,11 +84,13 @@ class CrearProducto(MDScreen):
                 'Nombre_producto': nombre_producto,
                 'cantidad': cant_producto,
                 'precio': precio_producto,
+                #'tipo': acá se almacena si es producto o servicio,
                 'categoria': categoria,
                 'descripcion': description
             }
+
         # ESTE ESPACIO SERÍA PARA CREAR EL CONDICIONAL Y AUTENTICAR AL USUARIO
-            db1.child("Productos").child().push(data)
+            #db1.child("Productos").child().push(data)
 class EditarProducto(MDScreen):
     pass
 class Eventos(MDScreen):
@@ -94,8 +109,11 @@ Window.size = (360, 640)
 #print(getattr(obtengo,'correo'))
 
 class InventarioApp(MDApp):
-
+    dialog = None
     def build(self):
+        self.theme_cls.theme_style = "Light"
+        self.theme_cls.primary_palette = "Blue"
+
         CE= ScreenManager()
         CE.add_widget(TuTienda(name="tutienda"))
         CE.add_widget(Inventarios(name="inventarios"))
@@ -108,6 +126,39 @@ class InventarioApp(MDApp):
         CE.add_widget(CrearEvento(name="crearevento"))
         return CE
 
+#ENCONTRAR FORMA DE PODER USAR LA VARIABLE VALOR DE ESTA CLASE A LA CLASE DE CREARPRODUCTO
+    def show_alert_dialog(self):
+        if not self.dialog:
+            self.dialog = MDDialog(
+                text="¿Quiére ingresar un producto o un servicio?",
+                buttons=[
+                    MDFlatButton(
+                        text="Producto",
+                        theme_text_color="Custom",
+                        text_color=self.theme_cls.primary_color,
+                        on_release=self.dialog_product,
+                    ),
+                    MDFlatButton(
+                        text="Servicio",
+                        theme_text_color="Custom",
+                        text_color=self.theme_cls.primary_color,
+                        on_release=self.dialog_service,
+                    ),
+                ],
+            )
+        self.dialog.open()
+
+    def dialog_product(self, obj):
+        valorElegido = 1
+        self.dialog.dismiss()
+        self.root.current = 'crearproducto'
+        print("Ha seleccionado", valorElegido)
+
+    def dialog_service(self, obj):
+        valorElegido = 2
+        self.dialog.dismiss()
+        self.root.current = 'crearproducto'
+        print("Ha seleccionado", valorElegido)
 
 
 if __name__== '__main__':
